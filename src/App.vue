@@ -1,12 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { RouterView } from 'vue-router';
+  import Appbar from './components/appbar/AppbarComponent.vue';
+  import Page from './components/page/PageComponent.vue';
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to
-    read the documentation
-  </p>
+  <div class="bg-muted flex">
+    <Appbar />
+    <Page>
+      <main>
+        <RouterView />
+      </main>
+    </Page>
+  </div>
 </template>
 
 <style scoped></style>
