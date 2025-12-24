@@ -3,8 +3,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: 'Fedorka', sans-serif;
-
   --breakpoint-3xl: 1600px;
   --breakpoint-4xl: 2000px;
 

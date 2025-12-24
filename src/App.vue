@@ -5,7 +5,7 @@ import Page from './components/page/PageComponent.vue'
 </script>
 
 <template>
-  <div class="bg-muted flex">
+  <div class="font-fredoka bg-muted flex">
     <Appbar />
     <Page>
       <main id="content">
