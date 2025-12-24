@@ -4,12 +4,12 @@ import SkipToLink from './SkipToLink.vue';
 
 <template>
   <nav class="relative">
-    <skip-to-link id="nav" href="#content">Hopp til innhold</skip-to-link>
-    <skip-to-link href="#end-nav">Hopp til slutt</skip-to-link>
+    <skip-to-link id="nav" href="#content">{{ $t("navigation.skip_to_content") }}</skip-to-link>
+    <skip-to-link href="#end-nav">{{ $t("navigation.skip_to_end") }}</skip-to-link>
     <ul class="flex flex-col gap-1">
       <slot></slot>
     </ul>
-    <skip-to-link id="end-nav" href="#nav">Hopp til start</skip-to-link>
+    <skip-to-link id="end-nav" href="#nav">{{ $t("navigation.skip_to_start") }}</skip-to-link>
   </nav>
 </template>
 

@@ -1,0 +1,20 @@
+{
+  "nokroner": "Nokroner",
+  "page": {
+    "overview": "Overview",
+    "analysis": "Analysis",
+    "accounts": "Accounts",
+    "transactions": "Transactions",
+    "payments": "Payments",
+    "budgets": "Budgets",
+    "saving goals": "Saving goals",
+    "loans": "Loans",
+    "assets": "Assets",
+    "investments": "Investments"
+  },
+  "navigation": {
+    "skip_to_content": "Skip to content",
+    "skip_to_end": "Skip to end",
+    "skip_to_start": "Go back to start"
+  }
+}

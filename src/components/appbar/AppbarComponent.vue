@@ -23,7 +23,7 @@ const filteredRoutes = routes.filter((route) => !(route.hidden ?? false))
 <template>
   <Sidebar>
     <SidebarHeader>
-      <SidebarTitle>Nokroner</SidebarTitle>
+      <SidebarTitle>{{ $t("nokroner") }}</SidebarTitle>
     </SidebarHeader>
     <SidebarContent>
       <Navigation>
@@ -34,7 +34,7 @@ const filteredRoutes = routes.filter((route) => !(route.hidden ?? false))
         >
           <SidebarItem :selected="path.includes(route.path)">
             <component :is="route.icon" />
-            {{ route.name }}
+            {{ $t(`page.${route.name}`) }}
           </SidebarItem>
         </navigation-item>
       </Navigation>
