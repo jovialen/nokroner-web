@@ -5,6 +5,7 @@ export const SUPPORT_LOCALES = ['en', 'no']
 const i18n = createI18n({
   locale: 'no',
   fallbackLocale: 'en',
+  legacy: false,
   messages: {
     en: await import('./locales/en.json'),
     no: await import('./locales/no.json'),
