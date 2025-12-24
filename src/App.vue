@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  import { RouterView } from 'vue-router';
-  import Appbar from './components/appbar/AppbarComponent.vue';
-  import Page from './components/page/PageComponent.vue';
+import { RouterView } from 'vue-router'
+import Appbar from './components/appbar/AppbarComponent.vue'
+import Page from './components/page/PageComponent.vue'
 </script>
 
 <template>
   <div class="bg-muted flex">
     <Appbar />
     <Page>
-      <main>
+      <main id="content">
         <RouterView />
       </main>
     </Page>

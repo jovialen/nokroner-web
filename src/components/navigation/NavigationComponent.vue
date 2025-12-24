@@ -1,24 +1,15 @@
 <script setup lang="ts">
-import NavigationItem from './NavigationItem.vue';
-
+import SkipToLink from './SkipToLink.vue';
 </script>
 
 <template>
-  <nav>
-    <ul class="flex flex-col">
-      <slot>
-        <navigation-item to="/">Oversikt</navigation-item>
-        <navigation-item to="/analysis">Analyse</navigation-item>
-        <navigation-item to="/account">Kontoer</navigation-item>
-        <navigation-item to="/transaction">Overførseler</navigation-item>
-        <navigation-item to="/payment">Faste utgifter</navigation-item>
-        <navigation-item to="/budget">Budsjett</navigation-item>
-        <navigation-item to="/saving-goals">Sparemål</navigation-item>
-        <navigation-item to="/loan">Lån</navigation-item>
-        <navigation-item to="/asset">Verdier</navigation-item>
-        <navigation-item to="/investment">Investeringer</navigation-item>
-      </slot>
+  <nav class="relative">
+    <skip-to-link id="nav" href="#content">Hopp til innhold</skip-to-link>
+    <skip-to-link href="#end-nav">Hopp til slutt</skip-to-link>
+    <ul class="flex flex-col gap-1">
+      <slot></slot>
     </ul>
+    <skip-to-link id="end-nav" href="#nav">Hopp til start</skip-to-link>
   </nav>
 </template>
 
