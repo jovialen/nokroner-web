@@ -34,8 +34,9 @@ api.interceptors.response.use(
     const auth = useAuthStore()
 
     // Log out if the session has become invalid
-    if (response.status === 401) {
+    if (response.status === 401 && auth.isAuthenticated) {
       auth.logout()
+      window.location.href = `/login?returnUrl=${window.location.pathname}`;
     }
 
     return Promise.reject(response)

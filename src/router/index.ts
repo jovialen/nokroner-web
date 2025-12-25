@@ -14,9 +14,9 @@ router.beforeEach((to, _from, next) => {
 
 router.beforeEach((to) => {
   // Redirect to login if user isn't logged in
-  const authPages = ['/login', '/register']
+  const allowUnauthorized = to.meta.allowUnauthorized ?? false
   const auth = useAuthStore()
-  const isAuthPage = authPages.includes(to.path)
+  const isAuthPage = allowUnauthorized
 
   if (!auth.isAuthenticated && !isAuthPage) {
     return { name: 'login', query: { returnUrl: to.path } }

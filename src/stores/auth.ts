@@ -18,18 +18,6 @@ export interface RegistrationData {
   password_confirmation: string
 }
 
-export const apiRoute = (route: string) => {
-  if (!route.startsWith('/')) {
-    route = `/${route}`
-  }
-
-  const host = import.meta.env.VITE_NOKRONER_API_HOST
-  const port = import.meta.env.VITE_NOKRONER_API_PORT
-
-  const path = `${host}:${port}${route}`
-  return path
-}
-
 export const useAuthStore = defineStore('authentication', {
   state: () => ({
     session: localStorage.getItem(API_SESSION) || '',
@@ -52,7 +40,7 @@ export const useAuthStore = defineStore('authentication', {
       try {
         // Attempt to create a new user
         await api.post(
-          apiRoute('/registration'),
+          '/registration',
           { user: data },
           {
             headers: {
@@ -86,7 +74,7 @@ export const useAuthStore = defineStore('authentication', {
 
       try {
         // Attempt to create a new session
-        const response = await api.post(apiRoute('/sessions'), data)
+        const response = await api.post('/sessions', data)
 
         // Save the session information to the state
         this.session = response.data.id
@@ -114,7 +102,7 @@ export const useAuthStore = defineStore('authentication', {
 
     logout() {
       // Delete the session API token
-      api.delete(apiRoute(`/session/${this.session}`))
+      api.delete(`/sessions/${this.session}`)
 
       // Clear out the state
       this.token = ''
@@ -123,11 +111,6 @@ export const useAuthStore = defineStore('authentication', {
       // Delete the stored state
       localStorage.removeItem(API_SESSION)
       localStorage.removeItem(API_ACCESS_TOKEN)
-
-      // Refresh the page to allow the router to redirect us to login
-      if (window) {
-        window.location.reload()
-      }
     },
 
     setToken(token: string) {

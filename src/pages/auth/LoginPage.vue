@@ -1,21 +1,23 @@
 <script setup lang="ts">
 import { useAuthStore, type LoginData } from '@/stores/auth';
 import { ref } from 'vue';
+import { useRoute } from 'vue-router';
 
-  const auth = useAuthStore();
+const route = useRoute()
+const auth = useAuthStore();
 
-  const formData = ref<LoginData>({
-    email_address: "",
-    password: "",
-  })
+const formData = ref<LoginData>({
+  email_address: "",
+  password: "",
+})
 
-  const login = (e: Event) => {
-    // Prevent redirect
-    e.preventDefault();
-
-    // Attempt login
-    auth.login(formData.value)
+const login = async () => {
+  // Attempt login
+  if (await auth.login(formData.value)) {
+    const returnUrl = route.query["returnUrl"]?.toString() ?? "/";
+    window.location.href = returnUrl
   }
+}
 </script>
 
 <template>

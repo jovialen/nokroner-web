@@ -44,12 +44,18 @@ export const routes: (RouteRecordRaw &
     name: 'login',
     path: '/login',
     component: LoginPage,
+    meta: {
+      allowUnauthorized: true,
+    },
   },
   {
     hidden: true,
     name: 'register',
     path: '/register',
     component: RegisterPage,
+    meta: {
+      allowUnauthorized: true,
+    },
   },
   {
     name: 'overview',
