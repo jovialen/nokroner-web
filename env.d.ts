@@ -7,8 +7,8 @@ interface ViteTypeOptions {
 }
 
 interface ImportMetaEnv {
-  readonly NOKRONER_API_HOST: string
-  readonly NOKRONER_API_PORT: string
+  readonly VITE_NOKRONER_API_HOST: string
+  readonly VITE_NOKRONER_API_PORT: string
 }
 
 interface ImportMeta {

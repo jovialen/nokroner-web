@@ -1,6 +1,8 @@
 import AccountsPage from '@/pages/account/AccountsPage.vue'
 import AnalysisPage from '@/pages/AnalysisPage.vue'
 import AssetsPage from '@/pages/asset/AssetsPage.vue'
+import LoginPage from '@/pages/auth/LoginPage.vue'
+import RegisterPage from '@/pages/auth/RegisterPage.vue'
 import BudgetsPage from '@/pages/budget/BudgetsPage.vue'
 import InvestmentsPage from '@/pages/investment/InvestmentsPage.vue'
 import LoansPage from '@/pages/loan/LoansPage.vue'
@@ -23,17 +25,31 @@ import {
 import type { FunctionalComponent } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 
-export const routes: (RouteRecordRaw & {
-  name: string
-  icon: FunctionalComponent
-  hidden?: boolean
-})[] = [
+export const routes: (RouteRecordRaw &
+  (
+    | {
+        icon: FunctionalComponent
+        hidden?: false
+      }
+    | { hidden: true }
+  ))[] = [
   {
     hidden: true,
     name: 'home',
-    icon: LayoutDashboardIcon,
     path: '/',
     redirect: '/overview',
+  },
+  {
+    hidden: true,
+    name: 'login',
+    path: '/login',
+    component: LoginPage,
+  },
+  {
+    hidden: true,
+    name: 'register',
+    path: '/register',
+    component: RegisterPage,
   },
   {
     name: 'overview',
