@@ -24,7 +24,7 @@ api.get("/accounts").then((response) => {
         <NumericStatCard :title="$t('stats.net_worth')" :number="net_worth" :change="1.01" />
         <NumericStatCard :title="$t('stats.income')" :number="net_worth" :change="0.80" />
         <NumericStatCard :title="$t('stats.expenses')" :number="net_worth" :change="0.90" decrease_positive />
-        <NumericStatCard :title="$t('stats.net_change')" :number="net_worth" :change="1.10" />
+        <NumericStatCard :title="$t('stats.net_change')" :number="net_worth" :change="1" />
       </div>
     </div>
   </div>

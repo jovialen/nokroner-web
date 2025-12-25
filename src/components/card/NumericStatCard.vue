@@ -24,9 +24,9 @@ const change_is = computed(() => {
 })
 
 const BADGE_STYLE = {
-  positive: 'bg-green-200 text-green-500',
-  negative: 'bg-red-200 text-red-400',
-  neutral: 'bg-yellow-200 text-yellow-400'
+  positive: 'bg-green-200 text-green-600',
+  negative: 'bg-red-200 text-red-500',
+  neutral: 'bg-yellow-100 text-yellow-600'
 }
 </script>
 
