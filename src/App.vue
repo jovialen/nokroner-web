@@ -18,7 +18,7 @@ const auth = useAuthStore();
       </main>
     </Page>
     </div>
-    <Card v-else class="absolute top-1/2 left-1/2 -translate-1/2">
+    <Card v-if="!auth.isAuthenticated" class="absolute top-1/2 left-1/2 -translate-1/2">
       <RouterView />
     </Card>
   </div>

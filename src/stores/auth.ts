@@ -1,4 +1,4 @@
-import { apiRoute, makeAuthHeader } from '@/services/api'
+import api from '@/services/axios'
 import axios from 'axios'
 import { defineStore } from 'pinia'
 
@@ -16,6 +16,18 @@ export interface RegistrationData {
   email_address: string
   password: string
   password_confirmation: string
+}
+
+export const apiRoute = (route: string) => {
+  if (!route.startsWith('/')) {
+    route = `/${route}`
+  }
+
+  const host = import.meta.env.VITE_NOKRONER_API_HOST
+  const port = import.meta.env.VITE_NOKRONER_API_PORT
+
+  const path = `${host}:${port}${route}`
+  return path
 }
 
 export const useAuthStore = defineStore('authentication', {
@@ -39,11 +51,15 @@ export const useAuthStore = defineStore('authentication', {
 
       try {
         // Attempt to create a new user
-        await axios.post(apiRoute('/registration'), { user: data }, {
-          headers: {
-            'Content-Type': 'application/json',
+        await api.post(
+          apiRoute('/registration'),
+          { user: data },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
           },
-        })
+        )
 
         // Log in to the new user, *should* never fail
         return this.login(data)
@@ -70,11 +86,7 @@ export const useAuthStore = defineStore('authentication', {
 
       try {
         // Attempt to create a new session
-        const response = await axios.post(
-          apiRoute('/sessions'),
-          data,
-          { headers: { 'Content-Type': 'application/json' } },
-        )
+        const response = await api.post(apiRoute('/sessions'), data)
 
         // Save the session information to the state
         this.session = response.data.id
@@ -102,10 +114,7 @@ export const useAuthStore = defineStore('authentication', {
 
     logout() {
       // Delete the session API token
-      axios.delete(
-        apiRoute(`/session/${this.session}`),
-        makeAuthHeader(this.token),
-      )
+      api.delete(apiRoute(`/session/${this.session}`))
 
       // Clear out the state
       this.token = ''
@@ -114,6 +123,16 @@ export const useAuthStore = defineStore('authentication', {
       // Delete the stored state
       localStorage.removeItem(API_SESSION)
       localStorage.removeItem(API_ACCESS_TOKEN)
+
+      // Refresh the page to allow the router to redirect us to login
+      if (window) {
+        window.location.reload()
+      }
+    },
+
+    setToken(token: string) {
+      this.token = token
+      localStorage.setItem(API_ACCESS_TOKEN, token)
     },
   },
 })
