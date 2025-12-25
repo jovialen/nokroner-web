@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, watch, type Ref } from 'vue'
+import { ref, watch } from 'vue'
 
-const emit = defineEmits(['loaded'])
+const emit = defineEmits(['failed'])
 
 defineProps({
   src: {
@@ -10,31 +10,20 @@ defineProps({
   },
 })
 
-const pImg: Ref<HTMLImageElement | null> = ref(null)
+const failed = ref(false)
 
 watch(
-  () => pImg.value?.complete,
+  [failed],
   () => {
-    if (pImg.value?.complete ?? false) {
-      emit('loaded')
+    if (failed.value) {
+      emit('failed')
     }
   },
 )
-
-const loadError = () => {
-  if (pImg.value) {
-    pImg.value.style.display = 'none'
-  }
-}
 </script>
 
 <template>
-  <img
-    :src="$props.src"
-    class="h-full w-full"
-    @error="loadError()"
-    ref="pImg"
-  />
+  <img :src="$props.src" class="h-full w-full" :class="failed && 'hidden'" @error="failed = true" />
 </template>
 
 <style scoped></style>
