@@ -60,7 +60,7 @@ api.get('/user').then((response) => {
         <span class="text-sm">{{ user.email_address }}</span>
       </div>
       <LogoutButton
-        class="transition aspect-square h-full p-2 ml-2 rounded-md hover:bg-destructive hover:text-destructive-foreground">
+        class="transition aspect-square h-full p-2 ml-2 rounded-md hover:bg-destructive hover:text-white">
         <LogOutIcon />
         <span class="sr-only">{{ $t("auth.logout") }}</span>
       </LogoutButton>

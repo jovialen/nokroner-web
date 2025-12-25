@@ -6,11 +6,13 @@ import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 const auth = useAuthStore()
+auth.error = "";
 
 const formData = ref<LoginData>({
   email_address: '',
   password: '',
 })
+
 
 const login = async () => {
   // Attempt login
@@ -26,12 +28,11 @@ const login = async () => {
   <h2 class="text-xl text-center mb-4">{{ $t("auth.login_greeting") }}</h2>
 
   <form class="space-y-4 w-xs" @submit.stop.prevent="login()">
-    <span v-if="auth.error" class="text-destructive">{{ auth.error }}</span>
+    <p v-if="auth.error" class="text-destructive">{{ auth.error }}</p>
 
     <div>
       <label for="email">{{ $t('auth.email') }}</label>
-      <input id="email" type="email" v-model="formData.email_address"
-        :placeholder="$t('auth.placeholder.email')" />
+      <input id="email" type="email" v-model="formData.email_address" :placeholder="$t('auth.placeholder.email')" />
     </div>
 
     <div>
@@ -51,7 +52,7 @@ const login = async () => {
 </template>
 
 <style scoped>
-@reference "tailwindcss"
+@reference "tailwindcss";
 
 label {
   @apply text-muted-foreground;
