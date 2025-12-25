@@ -119,7 +119,7 @@ export const useAuthStore = defineStore('authentication', {
         } else {
           this.error = 'Logout failed'
         }
-        console.error("Logout failed", this.error)
+        console.error('Logout failed', this.error)
       } finally {
         // Clear out the state
         this.token = ''

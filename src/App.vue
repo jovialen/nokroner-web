@@ -2,12 +2,12 @@
 import { RouterView } from 'vue-router'
 import Appbar from './components/appbar/AppbarComponent.vue'
 import Page from './components/page/PageComponent.vue'
-import Card from './components/card/CardComponent.vue';
+import Card from './components/card/CardComponent.vue'
 </script>
 
 <template>
   <div class="font-fredoka bg-background min-h-screen">
-    <div v-if="!$route.meta.allowUnauthorized" class="flex" >
+    <div v-if="!$route.meta.allowUnauthorized" class="flex">
       <Appbar />
       <Page>
         <main id="content">

@@ -13,9 +13,9 @@ import { ref } from 'vue'
 import router from '@/router'
 import UserCard from './UserCard.vue'
 
-const path = ref(window.location.pathname);
+const path = ref(window.location.pathname)
 router.afterEach(() => {
-  path.value = window.location.pathname;
+  path.value = window.location.pathname
 })
 
 const filteredRoutes = routes.filter((route) => !route.hidden)
@@ -24,7 +24,7 @@ const filteredRoutes = routes.filter((route) => !route.hidden)
 <template>
   <Sidebar>
     <SidebarHeader>
-      <SidebarTitle>{{ $t("nokroner") }}</SidebarTitle>
+      <SidebarTitle>{{ $t('nokroner') }}</SidebarTitle>
     </SidebarHeader>
     <SidebarContent>
       <Navigation>

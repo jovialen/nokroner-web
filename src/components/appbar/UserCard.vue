@@ -8,7 +8,7 @@ import { computed, ref } from 'vue'
 import api from '@/services/axios'
 import LogoutButton from '../auth/LogoutButton.vue'
 
-const imageLoaded = ref(false);
+const imageLoaded = ref(false)
 
 interface UserData {
   first_name: string
@@ -17,15 +17,17 @@ interface UserData {
 }
 
 const user = ref<UserData>({
-  first_name: "",
-  last_name: "",
-  email_address: "",
+  first_name: '',
+  last_name: '',
+  email_address: '',
 })
 
-const full_name = computed(() => `${user.value.first_name} ${user.value.last_name}`)
+const full_name = computed(
+  () => `${user.value.first_name} ${user.value.last_name}`,
+)
 
-api.get("/user").then((response) => {
-  user.value = response.data;
+api.get('/user').then((response) => {
+  user.value = response.data
 })
 </script>
 
@@ -33,8 +35,10 @@ api.get("/user").then((response) => {
   <Card>
     <div class="flex gap-2">
       <AvatarIcon>
-        <AvatarImage @loaded="imageLoaded = true"
-          src="https://externalcontent.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.w3schools.com%2Fw3images%2Favatar2.png&f=1&nofb=1&ipt=d20abe37a30a3941343b6f88ee2d68dd1663eab27f3e2465bb7b1a51033610d4" />
+        <AvatarImage
+          @loaded="imageLoaded = true"
+          src="https://externalcontent.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.w3schools.com%2Fw3images%2Favatar2.png&f=1&nofb=1&ipt=d20abe37a30a3941343b6f88ee2d68dd1663eab27f3e2465bb7b1a51033610d4"
+        />
         <AvatarFallback :show="!imageLoaded" :text="full_name" />
       </AvatarIcon>
       <div class="flex flex-col grow">

@@ -38,10 +38,7 @@ api.interceptors.response.use(
     const auth = useAuthStore()
 
     // Log out if the session has become invalid
-    if (
-      response.status === 401 &&
-      auth.isAuthenticated
-    ) {
+    if (response.status === 401 && auth.isAuthenticated) {
       await auth.logout()
       router.push({
         name: 'login',
