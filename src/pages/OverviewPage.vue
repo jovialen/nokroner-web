@@ -19,14 +19,14 @@ api.get("/accounts").then((response) => {
 
 <template>
   <div class="space-y-6">
-    <div class="overflow-x-scroll">
+    <section class="overflow-x-scroll" :aria-label="$t('accessibility.overview.core_stats')">
       <div class="flex gap-4 w-max pb-2">
         <NumericStatCard :title="$t('stats.net_worth')" :number="net_worth" :change="1.01" />
         <NumericStatCard :title="$t('stats.income')" :number="net_worth" :change="0.80" />
         <NumericStatCard :title="$t('stats.expenses')" :number="net_worth" :change="0.90" decrease_positive />
         <NumericStatCard :title="$t('stats.net_change')" :number="net_worth" :change="1" />
       </div>
-    </div>
+    </section>
   </div>
 </template>
 

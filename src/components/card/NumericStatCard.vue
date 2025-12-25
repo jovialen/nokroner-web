@@ -31,12 +31,12 @@ const BADGE_STYLE = {
 </script>
 
 <template>
-  <Card class="space-y-2">
+  <Card class="space-y-2 px-6 py-4"
+    :label="$t('accessibility.stat_card', { title: $props.title ?? 'Stat', number: $props.number ?? 0, change_percent: `${change_is} ${percentage_change}` })">
     <p class="text-xl">{{ $props.title }}</p>
     <p class="font-medium text-3xl text-right">{{ $props.number ?? 0 }} NOK</p>
     <p class="flex gap-1">
-      <span class="rounded-sm px-1 flex items-center"
-        :class="BADGE_STYLE[change_is]">
+      <span class="rounded-sm px-1 flex items-center" :class="BADGE_STYLE[change_is]">
         <ArrowUpIcon class="h-3/4 w-auto aspect-square" v-if="change_is === 'positive'" />
         <ArrowDownIcon class="h-3/4 w-auto aspect-square" v-else-if="change_is === 'negative'" />
         <MinusIcon class="h-3/4 w-auto aspect-square" v-else />

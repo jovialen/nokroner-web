@@ -45,5 +45,16 @@
     "income": "Inntekter",
     "expenses": "Utgifter",
     "net_change": "Netto endring"
+  },
+  "accessibility": {
+    "stat_card": "{title} på {number}, som er en endring på {change_percent} prosent",
+
+    "overview": {
+      "core_stats": "Kjernestatistikk"
+    },
+
+    "sidebar": {
+      "user_card": "Bruker {user}"
+    }
   }
 }

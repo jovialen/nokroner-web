@@ -48,7 +48,7 @@ api.get('/user').then((response) => {
 </script>
 
 <template>
-  <Card>
+  <Card :label="$t('accessibility.sidebar.user_card', { user: full_name })">
     <div class="flex gap-2 items-center">
       <AvatarIcon>
         <AvatarImage @failed="imageFailed = true"
@@ -59,8 +59,7 @@ api.get('/user').then((response) => {
         <span>{{ full_name }}</span>
         <span class="text-sm">{{ user.email_address }}</span>
       </div>
-      <LogoutButton
-        class="transition aspect-square h-full p-2 ml-2 rounded-md hover:bg-destructive hover:text-white">
+      <LogoutButton class="transition aspect-square h-full p-2 ml-2 rounded-md hover:bg-destructive hover:text-white">
         <LogOutIcon />
         <span class="sr-only">{{ $t("auth.logout") }}</span>
       </LogoutButton>

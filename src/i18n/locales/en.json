@@ -45,5 +45,16 @@
     "income": "Income",
     "expenses": "Expenses",
     "net_change": "Net change"
+  },
+  "accessibility": {
+    "stat_card": "{title} at {number}, a change of {change_percent} percent",
+
+    "overview": {
+      "core_stats": "Kjernestatistikk"
+    },
+
+    "sidebar": {
+      "user_card": "User {user}"
+    }
   }
 }

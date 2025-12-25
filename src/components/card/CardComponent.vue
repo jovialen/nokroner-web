@@ -1,9 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps({
+  "label": String
+})
+</script>
 
 <template>
-  <div class="bg-card text-card-foreground border border-border p-2 rounded-lg">
+  <section class="bg-card text-card-foreground border border-border p-2 rounded-lg" :aria-label="$props['label']"
+    :tabindex="$props.label ? 0 : undefined">
     <slot></slot>
-  </div>
+  </section>
 </template>
 
 <style scoped></style>
