@@ -5,9 +5,10 @@ import AvatarIcon from '../avatar/AvatarIcon.vue'
 import AvatarFallback from '../avatar/AvatarFallback.vue'
 
 import { ref } from 'vue'
-import { apiRoute } from '@/stores/auth'
+import { apiRoute, useAuthStore } from '@/stores/auth'
 import api from '@/services/axios'
 
+const auth = useAuthStore();
 const imageLoaded = ref(false);
 
 interface UserData {
@@ -34,10 +35,11 @@ api.get(apiRoute("/user")).then((response) => {
             <AvatarImage @loaded="imageLoaded = true" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.w3schools.com%2Fw3images%2Favatar2.png&f=1&nofb=1&ipt=d20abe37a30a3941343b6f88ee2d68dd1663eab27f3e2465bb7b1a51033610d4" />
             <AvatarFallback :show="!imageLoaded" text="Max Manus" />
           </AvatarIcon>
-          <div class="flex flex-col">
+          <div class="flex flex-col grow">
             <span>{{ user.first_name }} {{ user.last_name }}</span>
             <span class="text-sm">{{ user.email_address }}</span>
           </div>
+          <button @click="auth.logout" class="border text-destructive">Log ut</button>
         </div>
       </Card>
 </template>
