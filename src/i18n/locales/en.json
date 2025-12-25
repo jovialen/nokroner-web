@@ -37,5 +37,13 @@
       "password": "Enter password...",
       "password_confirmation": "Enter password again..."
     }
+  },
+  "stats": {
+    "change_month": "{change} since last month",
+
+    "net_worth": "Net worth",
+    "income": "Income",
+    "expenses": "Expenses",
+    "net_change": "Net change"
   }
 }

@@ -6,7 +6,7 @@ import Card from './components/card/CardComponent.vue'
 </script>
 
 <template>
-  <div class="font-fredoka bg-background min-h-screen dark">
+  <div class="font-fredoka bg-background min-h-screen">
     <div v-if="!$route.meta.allowUnauthorized" class="flex">
       <Appbar />
       <Page>

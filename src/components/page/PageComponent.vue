@@ -6,7 +6,7 @@ import Card from '../card/CardComponent.vue'
   <div
     class="container mx-auto max-h-screen py-4 pr-4 min-h-full overflow-y-scroll"
   >
-    <Card class="grow shadow min-h-full">
+    <Card class="grow shadow min-h-full p-6">
       <slot></slot>
     </Card>
   </div>

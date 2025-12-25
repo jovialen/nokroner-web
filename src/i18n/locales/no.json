@@ -37,5 +37,13 @@
       "password": "Skriv her...",
       "password_confirmation": "Samme igjen..."
     }
+  },
+  "stats": {
+    "change_month": "{change} siden forrige måned",
+
+    "net_worth": "Formue",
+    "income": "Inntekter",
+    "expenses": "Utgifter",
+    "net_change": "Netto endring"
   }
 }
