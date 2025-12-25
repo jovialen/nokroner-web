@@ -23,30 +23,52 @@ const login = async () => {
 </script>
 
 <template>
-  <h1>{{ $t('auth.login') }}</h1>
-  <form class="flex flex-col gap-2" @submit.stop.prevent="login()">
+  <h2 class="text-xl text-center mb-4">{{ $t("auth.login_greeting") }}</h2>
+
+  <form class="space-y-4 w-xs" @submit.stop.prevent="login()">
     <span v-if="auth.error" class="text-destructive">{{ auth.error }}</span>
-    <label for="email">{{ $t('auth.email') }}</label>
-    <input
-      id="email"
-      type="email"
-      v-model="formData.email_address"
-      :placeholder="$t('auth.placeholder.email')"
-    />
-    <label for="password">{{ $t('auth.password') }}</label>
-    <input
-      id="password"
-      type="password"
-      v-model="formData.password"
-      :placeholder="$t('auth.placeholder.password')"
-    />
-    <button type="submit" :disabled="auth.loading">
-      {{ $t('auth.login') }}
-    </button>
+
+    <div>
+      <label for="email">{{ $t('auth.email') }}</label>
+      <input id="email" type="email" v-model="formData.email_address"
+        :placeholder="$t('auth.placeholder.email')" />
+    </div>
+
+    <div>
+      <label for="password">{{ $t('auth.password') }}</label>
+      <input id="password" type="password" v-model="formData.password" :placeholder="$t('auth.placeholder.password')" />
+    </div>
+
+    <div class="grid! grid-cols-2">
+      <button type="submit" :disabled="auth.loading" class="bg-primary text-primary-foreground">
+        {{ $t('auth.login') }}
+      </button>
+      <router-link :to="`/register?returnUrl=${$route.query.returnUrl}`" class="bg-secondary text-secondary-foreground">
+        {{ $t('auth.register') }}
+      </router-link>
+    </div>
   </form>
-  <router-link :to="`/register?returnUrl=${$route.query.returnUrl}`">{{
-    $t('auth.register')
-  }}</router-link>
 </template>
 
-<style scoped></style>
+<style scoped>
+@reference "tailwindcss"
+
+label {
+  @apply text-muted-foreground;
+}
+
+input {
+  @apply px-4 py-2;
+  background-color: var(--muted);
+}
+
+div {
+  @apply flex flex-col gap-2;
+}
+
+a,
+button {
+  @apply px-4 py-2 text-center;
+  cursor: pointer;
+}
+</style>

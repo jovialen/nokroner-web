@@ -18,7 +18,9 @@
     "skip_to_start": "Hopp tilbake til start"
   },
   "auth": {
-    "login": "Log in",
+    "login_greeting": "Log inn for å fortsette",
+
+    "login": "Log inn",
     "logout": "Log ut",
     "register": "Registrer deg",
 

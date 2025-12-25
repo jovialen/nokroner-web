@@ -18,6 +18,8 @@
     "skip_to_start": "Go back to start"
   },
   "auth": {
+    "login_greeting": "Log in to continue",
+
     "login": "Log in",
     "logout": "Log out",
     "register": "Register",

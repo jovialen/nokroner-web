@@ -15,7 +15,8 @@ import Card from './components/card/CardComponent.vue'
         </main>
       </Page>
     </div>
-    <Card v-else class="absolute top-1/2 left-1/2 -translate-1/2">
+    <Card v-else class="absolute top-1/2 left-1/2 -translate-1/2 p-6">
+      <h1 class="text-center text-2xl font-baloo font-semibold mb-4">{{ $t('nokroner') }}</h1>
       <RouterView />
     </Card>
   </div>

@@ -27,7 +27,8 @@ const register = async () => {
 </script>
 
 <template>
-  <h1>{{ $t('auth.register') }}</h1>
+  <h2>{{ $t("auth.register") }}</h2>
+
   <form @submit.stop.prevent="register()" class="flex flex-col gap-2">
     <span v-if="auth.error">{{ auth.error }}</span>
 
