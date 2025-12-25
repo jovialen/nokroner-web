@@ -16,5 +16,24 @@
     "skip_to_content": "Skip to content",
     "skip_to_end": "Skip to end",
     "skip_to_start": "Go back to start"
+  },
+  "auth": {
+    "login": "Log in",
+    "logout": "Log out",
+    "register": "Register",
+
+    "first_name": "First name",
+    "last_name": "Last name",
+    "email": "Email",
+    "password": "Password",
+    "password_confirmation": "Confirm password",
+
+    "placeholder": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@example.com",
+      "password": "Enter password...",
+      "password_confirmation": "Enter password again..."
+    }
   }
 }

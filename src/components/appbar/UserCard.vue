@@ -4,7 +4,7 @@ import AvatarImage from '../avatar/AvatarImage.vue'
 import AvatarIcon from '../avatar/AvatarIcon.vue'
 import AvatarFallback from '../avatar/AvatarFallback.vue'
 
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { apiRoute, useAuthStore } from '@/stores/auth'
 import api from '@/services/axios'
 
@@ -23,6 +23,8 @@ const user = ref<UserData>({
   email_address: "",
 })
 
+const full_name = computed(() => `${user.value.first_name} ${user.value.last_name}`)
+
 api.get(apiRoute("/user")).then((response) => {
   user.value = response.data;
 })
@@ -32,14 +34,14 @@ api.get(apiRoute("/user")).then((response) => {
       <Card>
         <div class="flex gap-2">
           <AvatarIcon>
-            <AvatarImage @loaded="imageLoaded = true" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.w3schools.com%2Fw3images%2Favatar2.png&f=1&nofb=1&ipt=d20abe37a30a3941343b6f88ee2d68dd1663eab27f3e2465bb7b1a51033610d4" />
-            <AvatarFallback :show="!imageLoaded" text="Max Manus" />
+            <AvatarImage @loaded="imageLoaded = true" src="https://externalcontent.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.w3schools.com%2Fw3images%2Favatar2.png&f=1&nofb=1&ipt=d20abe37a30a3941343b6f88ee2d68dd1663eab27f3e2465bb7b1a51033610d4" />
+            <AvatarFallback :show="!imageLoaded" :text="full_name" />
           </AvatarIcon>
           <div class="flex flex-col grow">
-            <span>{{ user.first_name }} {{ user.last_name }}</span>
+            <span>{{ full_name }}</span>
             <span class="text-sm">{{ user.email_address }}</span>
           </div>
-          <button @click="auth.logout" class="border text-destructive">Log ut</button>
+          <button @click="auth.logout" class="border text-destructive">{{ $t("auth.logout") }}</button>
         </div>
       </Card>
 </template>

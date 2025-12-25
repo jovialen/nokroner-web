@@ -16,5 +16,24 @@
     "skip_to_content": "Hopp til innhold",
     "skip_to_end": "Hopp til slutt",
     "skip_to_start": "Hopp tilbake til start"
+  },
+  "auth": {
+    "login": "Log in",
+    "logout": "Log ut",
+    "register": "Registrer deg",
+
+    "first_name": "Fornavn",
+    "last_name": "Etternavn",
+    "email": "Epost",
+    "password": "Passord",
+    "password_confirmation": "Bekreft passord",
+
+    "placeholder": {
+      "first_name": "Ola",
+      "last_name": "Nordmann",
+      "email": "ola@nordmann.no",
+      "password": "Skriv her...",
+      "password_confirmation": "Samme igjen..."
+    }
   }
 }

@@ -19,16 +19,16 @@ import { ref } from 'vue';
 </script>
 
 <template>
-  <h1>Login</h1>
-  <form class="flex flex-col gap-2" @submit="login">
+  <h1>{{ $t("auth.login") }}</h1>
+  <form class="flex flex-col gap-2" @submit.stop.prevent="login()">
     <span v-if="auth.error" class="text-destructive">{{ auth.error }}</span>
-    <label for="email">Epost</label>
-    <input id="email" type="email" v-model="formData.email_address" placeholder="max@manus.no" />
-    <label for="password">Passord</label>
-    <input id="password" type="password" v-model="formData.password" placeholder="Passord..." />
-    <button type="submit" :disabled="auth.loading">Log in</button>
+    <label for="email">{{ $t("auth.email") }}</label>
+    <input id="email" type="email" v-model="formData.email_address" :placeholder="$t('auth.placeholder.email')" />
+    <label for="password">{{ $t("auth.password") }}</label>
+    <input id="password" type="password" v-model="formData.password" :placeholder="$t('auth.placeholder.password')" />
+    <button type="submit" :disabled="auth.loading">{{ $t("auth.login") }}</button>
   </form>
-  <router-link :to="`/register?returnUrl=${$route.query.returnUrl}`">New user</router-link>
+  <router-link :to="`/register?returnUrl=${$route.query.returnUrl}`">{{ $t("auth.register") }}</router-link>
 </template>
 
 <style scoped></style>
