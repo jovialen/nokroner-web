@@ -70,7 +70,7 @@ const register = async () => {
       <button type="submit" :disabled="auth.loading" class="bg-primary text-primary-foreground">
         {{ $t('auth.register') }}
       </button>
-      <router-link :to="`/login?returnUrl=${$route.query.returnUrl}`" class="bg-secondary text-secondary-foreground">
+      <router-link :to="`/login?returnUrl=${$route.query.returnUrl ?? '/'}`" class="bg-secondary text-secondary-foreground">
         {{ $t('auth.login') }}
       </router-link>
     </div>
