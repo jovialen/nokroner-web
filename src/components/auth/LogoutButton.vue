@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/auth';
-import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const auth = useAuthStore();
-const route = useRoute();
+
+const logout = async () => {
+  await auth.logout();
+  router.push({ name: "login" })
+}
 </script>
 
 <template>
-  <router-link @click="auth.logout()" :to="`/login?returnUrl=${route.path}`">
+  <button @click="logout()">
     <slot>{{ $t("auth.logout") }}</slot>
-  </router-link>
+  </button>
 </template>
 
 <style scoped></style>

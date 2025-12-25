@@ -17,10 +17,16 @@ import { ref, watch, type Ref } from 'vue';
       emit("loaded");
     }
   })
+
+  const loadError = () => {
+    if (pImg.value) {
+      pImg.value.style.display = 'none'
+    }
+  }
 </script>
 
 <template>
-  <img :src="$props.src" class="h-full w-full" @error="pImg!.style.display = 'none'" ref="pImg" />
+  <img :src="$props.src" class="h-full w-full" @error="loadError()" ref="pImg" />
 </template>
 
 <style scoped></style>

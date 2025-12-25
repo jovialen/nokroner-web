@@ -25,10 +25,11 @@ export const useAuthStore = defineStore('authentication', {
     user: null,
     error: '',
     loading: false,
+    loggingOut: false,
   }),
 
   getters: {
-    isAuthenticated: (state) => !!state.token,
+    isAuthenticated: (state) => !!state.token && !state.loggingOut,
   },
 
   actions: {
@@ -55,9 +56,9 @@ export const useAuthStore = defineStore('authentication', {
         // Handle failed authentication
         if (axios.isAxiosError(err)) {
           this.error =
-            err.response?.data?.error || err.message || 'Login failed'
+            err.response?.data?.error || err.message || 'Registration failed'
         } else {
-          this.error = 'Login failed'
+          this.error = 'Registration failed'
         }
       } finally {
         this.loading = false
@@ -71,10 +72,12 @@ export const useAuthStore = defineStore('authentication', {
       // Start new request
       this.loading = true
       this.error = ''
+      this.loggingOut = true
 
       try {
         // Attempt to create a new session
         const response = await api.post('/sessions', data)
+        console.log(response.data)
 
         // Save the session information to the state
         this.session = response.data.id
@@ -94,23 +97,41 @@ export const useAuthStore = defineStore('authentication', {
       } finally {
         // End request
         this.loading = false
+        this.loggingOut = false
       }
 
       // Return true if successfully logged in, otherwise false
       return this.error === ''
     },
 
-    logout() {
-      // Delete the session API token
-      api.delete(`/sessions/${this.session}`)
+    async logout() {
+      this.loading = true
+      this.error = ''
 
-      // Clear out the state
-      this.token = ''
-      this.session = ''
+      try {
+        // Delete the session API token
+        await api.delete(`/sessions/${this.session}`)
+      } catch (err: unknown) {
+        // Handle failed authentication
+        if (axios.isAxiosError(err)) {
+          this.error =
+            err.response?.data?.error || err.message || 'Logout failed'
+        } else {
+          this.error = 'Logout failed'
+        }
+        console.error("Logout failed", this.error)
+      } finally {
+        // Clear out the state
+        this.token = ''
+        this.session = ''
 
-      // Delete the stored state
-      localStorage.removeItem(API_SESSION)
-      localStorage.removeItem(API_ACCESS_TOKEN)
+        // Delete the stored state
+        localStorage.removeItem(API_SESSION)
+        localStorage.removeItem(API_ACCESS_TOKEN)
+
+        // Finish the request
+        this.loading = false
+      }
     },
 
     setToken(token: string) {

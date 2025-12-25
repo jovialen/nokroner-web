@@ -1,21 +1,23 @@
 import { useAuthStore } from '@/stores/auth'
-import axios from 'axios'
+import axios, { type AxiosResponse } from 'axios'
+import { useRoute, useRouter } from 'vue-router'
 
 const host = import.meta.env.VITE_NOKRONER_API_HOST
 const port = import.meta.env.VITE_NOKRONER_API_PORT
+export const BASE_URL = `${host}:${port}`
 
 const api = axios.create({
-  baseURL: `${host}:${port}`,
+  baseURL: BASE_URL,
 })
 
-api.interceptors.request.use((config) => {
+api.interceptors.request.use((request) => {
   const auth = useAuthStore()
 
   if (auth.token && auth.token !== '') {
-    config.headers.Authorization = `Bearer ${auth.token}`
+    request.headers.Authorization = `Bearer ${auth.token}`
   }
 
-  return config
+  return request
 })
 
 api.interceptors.response.use(
@@ -30,13 +32,21 @@ api.interceptors.response.use(
 
     return response
   },
-  function onFailure(response) {
+  async function onFailure(response: AxiosResponse) {
+    const route = useRoute()
+    const router = useRouter()
     const auth = useAuthStore()
 
     // Log out if the session has become invalid
-    if (response.status === 401 && auth.isAuthenticated) {
-      auth.logout()
-      window.location.href = `/login?returnUrl=${window.location.pathname}`;
+    if (
+      response.status === 401 &&
+      auth.isAuthenticated
+    ) {
+      await auth.logout()
+      router.push({
+        name: 'login',
+        query: { returnUrl: route.path },
+      })
     }
 
     return Promise.reject(response)

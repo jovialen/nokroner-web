@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useAuthStore, type RegistrationData } from '@/stores/auth';
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute()
+const router = useRouter();
 
 const auth = useAuthStore();
 
@@ -18,8 +19,9 @@ const formData = ref<RegistrationData>({
 const register = async () => {
   // Attempt registration
   if (await auth.register(formData.value)) {
-    const returnUrl = route.query["returnUrl"]?.toString() ?? "/";
-    window.location.href = returnUrl
+    router.replace({
+      path: route.query.returnUrl?.toString() ?? "/"
+    })
   }
 }
 </script>

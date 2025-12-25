@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useAuthStore, type LoginData } from '@/stores/auth';
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute()
+const router = useRouter();
 const auth = useAuthStore();
 
 const formData = ref<LoginData>({
@@ -14,8 +15,9 @@ const formData = ref<LoginData>({
 const login = async () => {
   // Attempt login
   if (await auth.login(formData.value)) {
-    const returnUrl = route.query["returnUrl"]?.toString() ?? "/";
-    window.location.href = returnUrl
+    router.replace({
+      path: route.query.returnUrl?.toString() ?? "/"
+    })
   }
 }
 </script>
