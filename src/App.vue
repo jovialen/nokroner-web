@@ -10,7 +10,7 @@ import Card from './components/card/CardComponent.vue'
     <div v-if="!$route.meta.allowUnauthorized" class="flex">
       <Appbar />
       <Page>
-        <main id="content">
+        <main id="content" class="space-y-6" :aria-label="$t(`navigation.${$route.name?.toString()}`)">
           <RouterView />
         </main>
       </Page>

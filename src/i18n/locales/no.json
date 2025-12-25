@@ -1,21 +1,20 @@
 {
   "nokroner": "Nokroner",
-  "page": {
+  "navigation": {
+    "skip_to_content": "Hopp til innhold",
+    "skip_to_end": "Hopp til slutt",
+    "skip_to_start": "Hopp tilbake til start",
+
     "overview": "Oversikt",
     "analysis": "Analyse",
     "accounts": "Kontoer",
     "transactions": "Overførseler",
     "payments": "Faste utgifter",
     "budgets": "Budsjett",
-    "saving goals": "Spareplaner",
+    "saving_goals": "Spareplaner",
     "loans": "Lån",
     "assets": "Verdier",
     "investments": "Investeringer"
-  },
-  "navigation": {
-    "skip_to_content": "Hopp til innhold",
-    "skip_to_end": "Hopp til slutt",
-    "skip_to_start": "Hopp tilbake til start"
   },
   "auth": {
     "login_greeting": "Log inn for å fortsette",
@@ -55,6 +54,19 @@
 
     "sidebar": {
       "user_card": "Bruker {user}"
+    },
+
+    "accounts": {
+      "list": "Alle kontoer"
+    }
+  },
+  "page": {
+    "overview": {
+      "title": "Oversikt"
+    },
+
+    "accounts": {
+      "my_accounts": "Kontoene mine"
     }
   }
 }

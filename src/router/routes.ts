@@ -94,7 +94,7 @@ export const routes: (RouteRecordRaw &
     component: BudgetsPage,
   },
   {
-    name: 'saving goals',
+    name: 'saving_goals',
     icon: CoinsIcon,
     path: '/saving-goal',
     component: SavingGoalsPage,

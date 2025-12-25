@@ -1,6 +1,10 @@
 {
   "nokroner": "Nokroner",
-  "page": {
+  "navigation": {
+    "skip_to_content": "Skip to content",
+    "skip_to_end": "Skip to end",
+    "skip_to_start": "Go back to start",
+
     "overview": "Overview",
     "analysis": "Analysis",
     "accounts": "Accounts",
@@ -11,11 +15,6 @@
     "loans": "Loans",
     "assets": "Assets",
     "investments": "Investments"
-  },
-  "navigation": {
-    "skip_to_content": "Skip to content",
-    "skip_to_end": "Skip to end",
-    "skip_to_start": "Go back to start"
   },
   "auth": {
     "login_greeting": "Log in to continue",
@@ -50,11 +49,24 @@
     "stat_card": "{title} at {number}, a change of {change_percent} percent",
 
     "overview": {
-      "core_stats": "Kjernestatistikk"
+      "core_stats": "Core stats"
     },
 
     "sidebar": {
       "user_card": "User {user}"
+    },
+
+    "accounts": {
+      "list": "All accounts"
+    }
+  },
+  "page": {
+    "overview": {
+      "title": "Overview"
+    },
+
+    "accounts": {
+      "my_accounts": "My accounts"
     }
   }
 }
