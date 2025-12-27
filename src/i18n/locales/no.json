@@ -69,7 +69,9 @@
     },
 
     "sidebar": {
-      "user_card": "Bruker {user}"
+      "user_card": "Bruker {user}",
+      "open_sidebar": "Åpne side panel",
+      "close_sidebar": "Lukk side panel"
     },
 
     "accounts": {

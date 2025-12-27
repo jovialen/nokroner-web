@@ -69,7 +69,9 @@
     },
 
     "sidebar": {
-      "user_card": "User {user}"
+      "user_card": "User {user}",
+      "open_sidebar": "Open side bar",
+      "close_sidebar": "Close side bar"
     },
 
     "accounts": {
