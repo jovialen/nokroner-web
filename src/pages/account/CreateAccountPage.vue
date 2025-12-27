@@ -18,8 +18,11 @@ const account = ref<AccountInfo>({
   interest: 0,
   owner_id: 0
 })
+const submitting = ref(false)
 
 const submit = async () => {
+  submitting.value = true
+
   try {
     await api.post("/accounts", account.value)
     accounts.fetchAccounts()
@@ -30,6 +33,8 @@ const submit = async () => {
     } else {
       alert("Failed to create account")
     }
+  } finally {
+    submitting.value = false
   }
 }
 
@@ -65,7 +70,7 @@ watchEffect(() => {
     </div>
 
     <div class="flex-row!">
-      <button type="submit" class="bg-primary text-primary-foreground px-2 py-1">
+      <button type="submit" class="bg-primary text-primary-foreground px-2 py-1" :disabled="submitting">
         {{ $t("page.create_account.submit") }}
       </button>
     </div>
