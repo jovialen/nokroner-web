@@ -6,6 +6,14 @@
       "name": "Navn",
       "balance": "Beholdning",
       "interest": "Rente"
+    },
+
+    "transaction": {
+      "name": "Navn",
+      "amount": "Beløp",
+      "from_account": "Fra",
+      "to_account": "Til",
+      "date": "Overførseldato"
     }
   },
   "navigation": {
@@ -96,6 +104,10 @@
         "name": "Brukskonto",
         "account_number": "1234.56.78900"
       }
+    },
+
+    "transactions": {
+      "add_transaction": "Ny overførsel"
     }
   }
 }

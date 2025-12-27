@@ -6,6 +6,14 @@
       "name": "Name",
       "balance": "Balance",
       "interest": "Interest"
+    },
+
+    "transaction": {
+      "name": "Name",
+      "amount": "Amount",
+      "from_account": "From",
+      "to_account": "To",
+      "date": "Date"
     }
   },
   "navigation": {
@@ -95,6 +103,10 @@
       "placeholder": {
         "name": "Checking account",
         "account_number": "12-34-56 01234567"
+      },
+
+      "transactions": {
+        "add_transaction": "Add transaction"
       }
     }
   }

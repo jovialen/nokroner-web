@@ -44,7 +44,8 @@ const login = async () => {
       <button type="submit" :disabled="auth.loading" class="bg-primary text-primary-foreground">
         {{ $t('auth.login') }}
       </button>
-      <router-link :to="`/register?returnUrl=${$route.query.returnUrl ?? '/'}`" class="bg-secondary text-secondary-foreground">
+      <router-link :to="`/register?returnUrl=${$route.query.returnUrl ?? '/'}`"
+        class="bg-secondary text-secondary-foreground">
         {{ $t('auth.register') }}
       </router-link>
     </div>
@@ -55,7 +56,7 @@ const login = async () => {
 @reference "tailwindcss";
 
 label {
-  @apply text-muted-foreground;
+  color: var(--muted-foreground);
 }
 
 input {

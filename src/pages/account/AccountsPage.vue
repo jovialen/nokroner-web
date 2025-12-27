@@ -3,24 +3,11 @@ import { PlusIcon } from 'lucide-vue-next';
 import { RouterLink } from 'vue-router';
 
 import { useAccountsStore } from '@/stores/accounts';
-import { computed, ref, watchEffect } from 'vue';
+import { computed } from 'vue';
 import { Table } from '@/components/table';
 import { account_columns } from './columns';
 
 const accounts = useAccountsStore()
-
-const total_balance = ref(0)
-const weighted_interest = ref(0)
-
-watchEffect(() => {
-  // Calculate the total balance
-  total_balance.value = accounts.user_accounts.map(account => account.balance).reduce((a, b) => a + b, 0)
-
-  // Calculate the equivalent interest for the total balance from the
-  // individual interests
-  const total_interest = accounts.user_accounts.map(account => account.balance * account.interest).reduce((a, b) => a + b, 0)
-  weighted_interest.value = total_interest / total_balance.value
-})
 
 const data = computed(() => accounts.user_accounts.map(({ name, account_number, balance, interest }) => ({
   name,
