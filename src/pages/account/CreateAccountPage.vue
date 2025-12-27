@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { type AccountInfo } from '@/api/schemas';
+import BackButton from '@/components/button/BackButton.vue';
 import api from '@/services/axios';
 import { useAccountsStore } from '@/stores/accounts';
 import { useOwnersStore } from '@/stores/owners';
@@ -46,6 +47,11 @@ watchEffect(() => {
 </script>
 
 <template>
+  <div class="flex items-center gap-4">
+    <BackButton />
+    <h1 class="text-xl">{{ $t("page.create_account.title") }}</h1>
+  </div>
+
   <form @submit.stop.prevent="submit()" class="flex flex-col gap-4">
     <div>
       <label for="name">{{ $t("schema.account.name") }}</label>
@@ -80,17 +86,17 @@ watchEffect(() => {
 <style scoped>
 @reference "tailwindcss";
 
-label {
+form>label {
   @apply text-sm;
   color: var(--muted-foreground);
 }
 
-input {
+form>input {
   @apply px-4 py-2;
   background-color: var(--muted);
 }
 
-div {
+form>div {
   @apply flex flex-col gap-2;
 }
 </style>

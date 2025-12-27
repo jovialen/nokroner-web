@@ -13,6 +13,8 @@
     "skip_to_end": "Hopp til slutt",
     "skip_to_start": "Hopp tilbake til start",
 
+    "back": "Tilbake",
+
     "overview": "Oversikt",
     "analysis": "Analyse",
     "accounts": "Kontoer",
@@ -87,6 +89,7 @@
     },
 
     "create_account": {
+      "title": "Lag konto",
       "submit": "Lag konto",
 
       "placeholder": {
