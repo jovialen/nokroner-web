@@ -35,7 +35,7 @@ const filteredRoutes = routes.filter((route) => !route.hidden)
         >
           <SidebarItem :selected="path.includes(route.path)">
             <component :is="route.icon" />
-            {{ $t(`page.${route.name?.toString()}`) }}
+            {{ $t(`navigation.${route.name?.toString()}`) }}
           </SidebarItem>
         </navigation-item>
       </Navigation>

@@ -1,6 +1,20 @@
 {
   "nokroner": "Nokroner",
-  "page": {
+  "schema": {
+    "account": {
+      "account_number": "Account number",
+      "name": "Name",
+      "balance": "Balance",
+      "interest": "Interest"
+    }
+  },
+  "navigation": {
+    "skip_to_content": "Skip to content",
+    "skip_to_end": "Skip to end",
+    "skip_to_start": "Go back to start",
+
+    "back": "Back",
+
     "overview": "Overview",
     "analysis": "Analysis",
     "accounts": "Accounts",
@@ -11,11 +25,6 @@
     "loans": "Loans",
     "assets": "Assets",
     "investments": "Investments"
-  },
-  "navigation": {
-    "skip_to_content": "Skip to content",
-    "skip_to_end": "Skip to end",
-    "skip_to_start": "Go back to start"
   },
   "auth": {
     "login_greeting": "Log in to continue",
@@ -36,6 +45,57 @@
       "email": "john.doe{'@'}example.com",
       "password": "Enter password...",
       "password_confirmation": "Enter password again..."
+    }
+  },
+  "stats": {
+    "change_month": "{change} since last month",
+
+    "net_worth": "Net worth",
+    "income": "Income",
+    "expenses": "Expenses",
+    "net_change": "Net change"
+  },
+  "accessibility": {
+    "overview": {
+      "core_stats": "Core stats"
+    },
+
+    "sidebar": {
+      "user_card": "User {user}"
+    },
+
+    "accounts": {
+      "table": "All accounts"
+    },
+
+    "table": {
+      "actions": "Actions"
+    }
+  },
+  "page": {
+    "overview": {
+      "title": "Overview"
+    },
+
+    "accounts": {
+      "my_accounts": "My accounts",
+      "add_account": "Add account",
+
+      "table": {
+        "change": "Change {period} {unit}",
+        "trend": "Trend {period} {unit}",
+        "total": "Total"
+      }
+    },
+
+    "create_account": {
+      "title": "Create account",
+      "submit": "Create account",
+
+      "placeholder": {
+        "name": "Checking account",
+        "account_number": "12-34-56 01234567"
+      }
     }
   }
 }
