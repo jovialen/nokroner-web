@@ -1,6 +1,8 @@
+import type { User } from '@/api/schemas'
 import api from '@/services/axios'
 import axios from 'axios'
 import { defineStore } from 'pinia'
+import { computed, ref, watchEffect } from 'vue'
 
 const API_SESSION = 'apiSession'
 const API_ACCESS_TOKEN = 'apiAccessToken'
@@ -22,7 +24,6 @@ export const useAuthStore = defineStore('authentication', {
   state: () => ({
     session: localStorage.getItem(API_SESSION) || '',
     token: localStorage.getItem(API_ACCESS_TOKEN) || '',
-    user: null,
     error: '',
     loading: false,
     loggingOut: false,
@@ -139,4 +140,44 @@ export const useAuthStore = defineStore('authentication', {
       localStorage.setItem(API_ACCESS_TOKEN, token)
     },
   },
+})
+
+export const useUserStore = defineStore('user', () => {
+  const auth = useAuthStore()
+  const user = ref<User | undefined | null>()
+
+  const full_name = computed(() =>
+    user.value ? `${user.value.first_name} ${user.value.last_name}` : '',
+  )
+
+  const initials = computed(() => {
+    const names = full_name.value.split(' ')
+    const first = names[0]
+    const last = names[names.length - 1]
+
+    if (!first || first === '') {
+      return ''
+    } else if (first === last) {
+      return first.substring(0, 2)
+    } else {
+      return first.charAt(0) + last!.charAt(0)
+    }
+  })
+
+  const fetchUser = async () => {
+    if (auth.isAuthenticated) {
+      const response = await api.get('/user')
+      user.value = response.data
+    } else {
+      user.value = null
+    }
+  }
+
+  watchEffect(() => {
+    if (auth.isAuthenticated) {
+      fetchUser()
+    }
+  })
+
+  return { user, full_name, initials, fetchUser }
 })
