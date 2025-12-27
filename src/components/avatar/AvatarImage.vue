@@ -12,18 +12,20 @@ defineProps({
 
 const failed = ref(false)
 
-watch(
-  [failed],
-  () => {
-    if (failed.value) {
-      emit('failed')
-    }
-  },
-)
+watch([failed], () => {
+  if (failed.value) {
+    emit('failed')
+  }
+})
 </script>
 
 <template>
-  <img :src="$props.src" class="h-full w-full" :class="failed && 'hidden'" @error="failed = true" />
+  <img
+    :src="$props.src"
+    class="h-full w-full"
+    :class="failed && 'hidden'"
+    @error="failed = true"
+  />
 </template>
 
 <style scoped></style>

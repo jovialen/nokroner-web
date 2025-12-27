@@ -10,13 +10,19 @@ import Card from './components/card/CardComponent.vue'
     <div v-if="!$route.meta.allowUnauthorized" class="flex">
       <Appbar />
       <Page>
-        <main id="content" class="space-y-6" :aria-label="$t(`navigation.${$route.name?.toString()}`)">
+        <main
+          id="content"
+          class="space-y-6"
+          :aria-label="$t(`navigation.${$route.name?.toString()}`)"
+        >
           <RouterView />
         </main>
       </Page>
     </div>
     <Card v-else class="absolute top-1/2 left-1/2 -translate-1/2 p-6">
-      <h1 class="text-center text-2xl font-baloo font-semibold mb-4">{{ $t('nokroner') }}</h1>
+      <h1 class="text-center text-2xl font-baloo font-semibold mb-4">
+        {{ $t('nokroner') }}
+      </h1>
       <RouterView />
     </Card>
   </div>

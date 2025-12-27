@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, h } from 'vue';
-import { getColumnData, type Column } from '.';
+import { computed, h } from 'vue'
+import { getColumnData, type Column } from '.'
 
 const props = defineProps({
   columns: { type: Array<Column<unknown>>, required: true },
@@ -9,9 +9,21 @@ const props = defineProps({
 })
 
 const column = props.columns[props.column_index]!
-const columnData = computed(() => props.data ? getColumnData(column, props.data) : undefined)
-const processedData = computed(() => column.footerFunction !== undefined && columnData.value !== undefined && props.data !== undefined ? column.footerFunction(columnData.value, props.columns, props.data) : undefined)
-const comp = computed(() => column.footer ? column.footer(processedData.value) : h("p", {}, "" + processedData.value))
+const columnData = computed(() =>
+  props.data ? getColumnData(column, props.data) : undefined,
+)
+const processedData = computed(() =>
+  column.footerFunction !== undefined &&
+  columnData.value !== undefined &&
+  props.data !== undefined
+    ? column.footerFunction(columnData.value, props.columns, props.data)
+    : undefined,
+)
+const comp = computed(() =>
+  column.footer
+    ? column.footer(processedData.value)
+    : h('p', {}, '' + processedData.value),
+)
 </script>
 
 <template>

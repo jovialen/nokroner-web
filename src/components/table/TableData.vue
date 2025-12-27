@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { h } from 'vue';
-import { type Column } from '.';
+import { h } from 'vue'
+import { type Column } from '.'
 
 const props = defineProps({
   columns: { type: Array<Column<unknown>>, required: true },
@@ -9,7 +9,9 @@ const props = defineProps({
 })
 
 const column = props.columns[props.column_index]
-const comp = column?.cell ? column.cell(props.data) : h('p', {}, "" + props.data)
+const comp = column?.cell
+  ? column.cell(props.data)
+  : h('p', {}, '' + props.data)
 </script>
 
 <template>
