@@ -57,7 +57,11 @@
     },
 
     "accounts": {
-      "list": "All accounts"
+      "table": "All accounts"
+    },
+
+    "table": {
+      "actions": "Actions"
     }
   },
   "page": {
@@ -66,7 +70,16 @@
     },
 
     "accounts": {
-      "my_accounts": "My accounts"
+      "my_accounts": "My accounts",
+
+      "table": {
+        "account_number": "Account number",
+        "name": "Name",
+        "balance": "Balance",
+        "interest": "Interest",
+        "change": "Change {period}",
+        "trend": "Trend"
+      }
     }
   }
 }

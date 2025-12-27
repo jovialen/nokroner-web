@@ -57,7 +57,11 @@
     },
 
     "accounts": {
-      "list": "Alle kontoer"
+      "table": "Alle kontoer"
+    },
+
+    "table": {
+      "actions": "Handlinger"
     }
   },
   "page": {
@@ -66,7 +70,16 @@
     },
 
     "accounts": {
-      "my_accounts": "Kontoene mine"
+      "my_accounts": "Kontoene mine",
+
+      "table": {
+        "account_number": "Kontonummer",
+        "name": "Navn",
+        "balance": "Beholdning",
+        "interest": "Rente",
+        "change": "Endring {period}",
+        "trend": "Trend"
+      }
     }
   }
 }
