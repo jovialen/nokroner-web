@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { EllipsisVerticalIcon, PlusIcon } from 'lucide-vue-next';
 import { RouterLink } from 'vue-router';
+import PercentageBadge from '@/components/badge/PercentageBadge.vue';
 
 import { useAccountsStore } from '@/stores/accounts';
 import { formatPercentage } from '@/utils/format';
@@ -42,10 +43,10 @@ watchEffect(() => {
           <th>{{ $t("schema.account.account_number") }}</th>
           <th>{{ $t("schema.account.balance") }}</th>
           <th>{{ $t("schema.account.interest") }}</th>
-          <th>%{{ $t("page.accounts.table.change", { period: "1D" }) }}</th>
-          <th>{{ $t("page.accounts.table.change", { period: "1D" }) }}</th>
-          <th>%{{ $t("page.accounts.table.trend") }}</th>
-          <th>{{ $t("page.accounts.table.trend") }}</th>
+          <th>{{ $t("page.accounts.table.change", { period: "1D", unit: "%" }) }}</th>
+          <th>{{ $t("page.accounts.table.change", { period: "1D", unit: "NOK" }) }}</th>
+          <th>{{ $t("page.accounts.table.trend", { period: "1M", unit: "%" }) }}</th>
+          <th>{{ $t("page.accounts.table.trend", { period: "1M", unit: "NOK" }) }}</th>
           <th><span class="sr-only">{{ $t("accessibility.table.actions") }}</span></th>
         </tr>
       </thead>
@@ -57,9 +58,13 @@ watchEffect(() => {
           <td>{{ account.account_number }}</td>
           <td>{{ account.balance }} <span>NOK</span></td>
           <td>{{ formatPercentage(account.interest - 1, 1) }}</td>
-          <td>{{ formatPercentage(0) }}</td>
+          <td>
+            <PercentageBadge :percentage="0" :baseline="0" />
+          </td>
           <td>0 <span>NOK</span></td>
-          <td>{{ formatPercentage(0) }} <span>per month</span></td>
+          <td>
+            <PercentageBadge :percentage="0" :baseline="0" />
+          </td>
           <td>0 <span>NOK/month</span></td>
           <td class="flex items-center justify-center">
             <button>
@@ -78,10 +83,14 @@ watchEffect(() => {
           <td></td>
           <td>{{ total_balance }} NOK</td>
           <td>{{ formatPercentage(weighted_interest - 1, 1) }}</td>
-          <td>{{ formatPercentage(0) }}</td>
+          <td>
+            <PercentageBadge :percentage="0" :baseline="0" />
+          </td>
           <td>0 NOK</td>
-          <td>{{ formatPercentage(0) }} per month</td>
-          <td>0 NOK/month</td>
+          <td>
+            <PercentageBadge :percentage="0" :baseline="0" />
+          </td>
+          <td>0 NOK</td>
           <td></td>
         </tr>
       </tfoot>
@@ -98,9 +107,13 @@ table {
   border-color: var(--border);
 }
 
+tr {
+  padding: calc(var(--spacing) * 4);
+}
+
 th,
 td {
-  @apply px-4 py-2;
+  padding: calc(var(--spacing) * 2);
   text-align: left;
   font-weight: normal;
 }

@@ -54,8 +54,6 @@
     "net_change": "Net change"
   },
   "accessibility": {
-    "stat_card": "{title} at {number}, a change of {change_percent} percent",
-
     "overview": {
       "core_stats": "Core stats"
     },
@@ -82,8 +80,8 @@
       "add_account": "Add account",
 
       "table": {
-        "change": "Change {period}",
-        "trend": "Trend",
+        "change": "Change {period} {unit}",
+        "trend": "Trend {period} {unit}",
         "total": "Total"
       }
     },

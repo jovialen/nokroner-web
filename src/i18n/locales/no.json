@@ -54,8 +54,6 @@
     "net_change": "Netto endring"
   },
   "accessibility": {
-    "stat_card": "{title} på {number}, som er en endring på {change_percent} prosent",
-
     "overview": {
       "core_stats": "Kjernestatistikk"
     },
@@ -82,8 +80,8 @@
       "add_account": "Ny konto",
 
       "table": {
-        "change": "Endring {period}",
-        "trend": "Trend",
+        "change": "Endring {period} {unit}",
+        "trend": "Trend {period} {unit}",
         "total": "Total"
       }
     },

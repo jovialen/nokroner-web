@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import Card from './CardComponent.vue';
-import { ArrowDownIcon, ArrowUpIcon, MinusIcon } from 'lucide-vue-next';
+import PercentageBadge from '../badge/PercentageBadge.vue';
 
 const props = defineProps({
   title: String,
@@ -9,39 +8,14 @@ const props = defineProps({
   decrease_positive: { type: Boolean, default: false },
   change: { type: Number, default: 1 },
 })
-
-const percentage_change = computed(() => Math.abs(Math.round((props.change - 1) * 100)))
-const change_is = computed(() => {
-  const threshold = props.decrease_positive ? -1 : 1;
-
-  if (props.change > threshold) {
-    return "positive"
-  } else if (props.change < threshold) {
-    return "negative"
-  } else {
-    return "neutral"
-  }
-})
-
-const BADGE_STYLE = {
-  positive: 'bg-green-200 text-green-600',
-  negative: 'bg-red-200 text-red-500',
-  neutral: 'bg-yellow-100 text-yellow-600'
-}
 </script>
 
 <template>
-  <Card class="space-y-2 px-6 py-4"
-    :label="$t('accessibility.stat_card', { title: $props.title ?? 'Stat', number: $props.number ?? 0, change_percent: `${change_is} ${percentage_change}` })">
+  <Card class="space-y-2 px-6 py-4">
     <p class="text-xl">{{ $props.title }}</p>
     <p class="font-medium text-3xl text-right">{{ $props.number ?? 0 }} NOK</p>
     <p class="flex gap-1">
-      <span class="rounded-sm px-1 flex items-center" :class="BADGE_STYLE[change_is]">
-        <ArrowUpIcon class="h-3/4 w-auto aspect-square" v-if="change_is === 'positive'" />
-        <ArrowDownIcon class="h-3/4 w-auto aspect-square" v-else-if="change_is === 'negative'" />
-        <MinusIcon class="h-3/4 w-auto aspect-square" v-else />
-        {{ percentage_change }}%
-      </span>
+      <PercentageBadge :percentage="props.change" :decrease_positive="$props.decrease_positive" />
       {{ $t("stats.change_month") }}
     </p>
   </Card>
