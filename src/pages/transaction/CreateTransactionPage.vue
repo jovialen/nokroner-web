@@ -2,27 +2,30 @@
 import { type TransactionInfo } from '@/api/schemas'
 import BackButton from '@/components/button/BackButton.vue'
 import api from '@/services/axios'
-import { useAccountsStore } from '@/stores/accounts'
+import { useAccountsStore, useTransactionsStore } from '@/stores/accounts'
 import axios from 'axios'
-import { ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const accounts = useAccountsStore()
+const transactions = useTransactionsStore()
 
 const transaction = ref<TransactionInfo>({
   name: '',
   amount: 0,
-  from_account_id: accounts.user_accounts[0]?.id ?? 0,
-  to_account_id: accounts.user_accounts[0]?.id ?? 0,
+  from_account_id: accounts.user_accounts[0]?.id ?? -1,
+  to_account_id: accounts.user_accounts[0]?.id ?? -1,
 })
 const submitting = ref(false)
+const maxAmount = computed(() => accounts.getAccount(transaction.value.from_account_id)?.balance ?? 0)
 
 const submit = async () => {
   submitting.value = true
 
   try {
     await api.post('/transactions', transaction.value)
+    transactions.fetchAccounts()
     accounts.fetchAccounts()
     router.back()
   } catch (err) {
@@ -35,6 +38,14 @@ const submit = async () => {
     submitting.value = false
   }
 }
+
+watch([() => transaction.value.amount, maxAmount], () => {
+  if (transaction.value.amount < 0) {
+    transaction.value.amount = 0
+  } else if (transaction.value.amount > maxAmount.value) {
+    transaction.value.amount = maxAmount.value
+  }
+})
 </script>
 
 <template>
@@ -52,11 +63,15 @@ const submit = async () => {
 
     <div>
       <label for="amount">{{ $t('schema.transaction.amount') }}</label>
-      <input type="number" step="0.01" name="amount" id="amount" v-model="transaction.amount" />
+      <input type="number" name="amount" id="amount" v-model="transaction.amount" min="0" :max="maxAmount" step="0.01"
+        :disabled="transaction.from_account_id === transaction.to_account_id || transaction.from_account_id === -1" />
+      <input type="range" name="amount_range" id="amount_range" min="0" :max="maxAmount" step="0.01"
+        v-model="transaction.amount"
+        :disabled="transaction.from_account_id === transaction.to_account_id || transaction.from_account_id === -1">
     </div>
 
-    <div>
-      <label for="from_account">{{ $t('schema.transaction.from_account') }}</label>
+    <div div>
+      <label for=" from_account">{{ $t('schema.transaction.from_account') }}</label>
       <select name="from_account" id="from_account" v-model="transaction.from_account_id">
         <option v-for="account in accounts.user_accounts" :value="account.id" :key="account.name">
           {{ account.name }}
