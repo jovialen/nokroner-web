@@ -1,5 +1,13 @@
 {
   "nokroner": "Nokroner",
+  "schema": {
+    "account": {
+      "account_number": "Kontonummer",
+      "name": "Navn",
+      "balance": "Beholdning",
+      "interest": "Rente"
+    }
+  },
   "navigation": {
     "skip_to_content": "Hopp til innhold",
     "skip_to_end": "Hopp til slutt",
@@ -71,15 +79,21 @@
 
     "accounts": {
       "my_accounts": "Kontoene mine",
+      "add_account": "Ny konto",
 
       "table": {
-        "account_number": "Kontonummer",
-        "name": "Navn",
-        "balance": "Beholdning",
-        "interest": "Rente",
         "change": "Endring {period}",
         "trend": "Trend",
         "total": "Total"
+      }
+    },
+
+    "create_account": {
+      "submit": "Lag konto",
+
+      "placeholder": {
+        "name": "Brukskonto",
+        "account_number": "1234.56.78900"
       }
     }
   }

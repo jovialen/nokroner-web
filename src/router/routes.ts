@@ -1,4 +1,5 @@
 import AccountsPage from '@/pages/account/AccountsPage.vue'
+import CreateAccountPage from '@/pages/account/CreateAccountPage.vue'
 import AnalysisPage from '@/pages/AnalysisPage.vue'
 import AssetsPage from '@/pages/asset/AssetsPage.vue'
 import LoginPage from '@/pages/auth/LoginPage.vue'
@@ -74,6 +75,12 @@ export const routes: (RouteRecordRaw &
     icon: WalletIcon,
     path: '/account',
     component: AccountsPage,
+  },
+  {
+    hidden: true,
+    name: 'create_account',
+    path: '/account/create',
+    component: CreateAccountPage,
   },
   {
     name: 'transactions',

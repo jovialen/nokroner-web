@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { EllipsisVerticalIcon } from 'lucide-vue-next';
+import { EllipsisVerticalIcon, PlusIcon } from 'lucide-vue-next';
+import { RouterLink } from 'vue-router';
 
 import { useAccountsStore } from '@/stores/accounts';
 import { formatPercentage } from '@/utils/format';
@@ -22,17 +23,25 @@ watchEffect(() => {
 </script>
 
 <template>
-  <h1 class="text-xl">{{ $t("page.accounts.my_accounts") }}</h1>
+  <div class="flex justify-between items-center">
+    <h1 class="text-xl">{{ $t("page.accounts.my_accounts") }}</h1>
+
+    <router-link to="/account/create"
+      class="flex items-center bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 transition">
+      <PlusIcon />
+      {{ $t("page.accounts.add_account") }}
+    </router-link>
+  </div>
 
   <section class="w-full overflow-x-scroll">
     <table :aria-label="$t('accessibility.accounts.table')" tabindex="0"
-      class="w-full overflow-hidden rounded-lg border w-max">
+      class="overflow-hidden rounded-lg border w-max min-w-full">
       <thead class="bg-muted text-muted-foreground text-sm">
         <tr>
-          <th>{{ $t("page.accounts.table.name") }}</th>
-          <th>{{ $t("page.accounts.table.account_number") }}</th>
-          <th>{{ $t("page.accounts.table.balance") }}</th>
-          <th>{{ $t("page.accounts.table.interest") }}</th>
+          <th>{{ $t("schema.account.name") }}</th>
+          <th>{{ $t("schema.account.account_number") }}</th>
+          <th>{{ $t("schema.account.balance") }}</th>
+          <th>{{ $t("schema.account.interest") }}</th>
           <th>%{{ $t("page.accounts.table.change", { period: "1D" }) }}</th>
           <th>{{ $t("page.accounts.table.change", { period: "1D" }) }}</th>
           <th>%{{ $t("page.accounts.table.trend") }}</th>
@@ -41,7 +50,7 @@ watchEffect(() => {
         </tr>
       </thead>
 
-      <tbody class="text-lg text-muted-foreground">
+      <tbody class="text-muted-foreground">
         <tr v-for="account in accounts.user_accounts" :key="account.name"
           class="even:bg-muted hover:bg-primary hover:text-primary-foreground transition">
           <th scope="row">{{ account.name }}</th>
@@ -59,6 +68,8 @@ watchEffect(() => {
             </button>
           </td>
         </tr>
+
+        <div v-if="accounts.user_accounts.length === 0"></div>
       </tbody>
 
       <tfoot class="bg-muted text-muted-foreground text-sm">

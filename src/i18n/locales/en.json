@@ -1,5 +1,13 @@
 {
   "nokroner": "Nokroner",
+  "schema": {
+    "account": {
+      "account_number": "Account number",
+      "name": "Name",
+      "balance": "Balance",
+      "interest": "Interest"
+    }
+  },
   "navigation": {
     "skip_to_content": "Skip to content",
     "skip_to_end": "Skip to end",
@@ -71,15 +79,21 @@
 
     "accounts": {
       "my_accounts": "My accounts",
+      "add_account": "Add account",
 
       "table": {
-        "account_number": "Account number",
-        "name": "Name",
-        "balance": "Balance",
-        "interest": "Interest",
         "change": "Change {period}",
         "trend": "Trend",
         "total": "Total"
+      }
+    },
+
+    "create_account": {
+      "submit": "Create account",
+
+      "placeholder": {
+        "name": "Checking account",
+        "account_number": "12-34-56 01234567"
       }
     }
   }
