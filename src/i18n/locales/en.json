@@ -103,10 +103,18 @@
       "placeholder": {
         "name": "Checking account",
         "account_number": "12-34-56 01234567"
-      },
+      }
+    },
 
-      "transactions": {
-        "add_transaction": "Add transaction"
+    "transactions": {
+      "add_transaction": "Add transaction"
+    },
+
+    "create_transaction": {
+      "title": "Add transaction",
+
+      "placeholder": {
+        "name": "Weekly allowance"
       }
     }
   }

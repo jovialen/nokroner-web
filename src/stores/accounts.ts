@@ -68,7 +68,7 @@ export const useTransactionsStore = defineStore('transactions', () => {
     return [
       ...getTransactionsTo(account),
       ...getTransactionsFrom(account),
-    ].sort((a, b) => a.created_at.getTime() - b.created_at.getTime())
+    ].sort((a, b) => b.created_at.getTime() - a.created_at.getTime())
   }
 
   const getOwnerTransactions = (owner: Owner | undefined) => {
@@ -87,7 +87,7 @@ export const useTransactionsStore = defineStore('transactions', () => {
     )
 
     // Sort by creation date
-    transactions.sort((a, b) => a.created_at.getTime() - b.created_at.getTime())
+    transactions.sort((a, b) => b.created_at.getTime() - a.created_at.getTime())
     return transactions
   }
 

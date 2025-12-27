@@ -108,6 +108,14 @@
 
     "transactions": {
       "add_transaction": "Ny overførsel"
+    },
+
+    "create_transaction": {
+      "title": "Lag overførsel",
+
+      "placeholder": {
+        "name": "Ukeslønn"
+      }
     }
   }
 }
