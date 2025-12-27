@@ -50,27 +50,4 @@ const data = computed(() => accounts.user_accounts.map(({ name, account_number, 
   </section>
 </template>
 
-<style scoped>
-@reference "tailwindcss";
-
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  border-color: var(--border);
-}
-
-tr {
-  padding: calc(var(--spacing) * 4);
-}
-
-th,
-td {
-  padding: calc(var(--spacing) * 2);
-  text-align: left;
-  font-weight: normal;
-}
-
-td>span {
-  @apply text-sm;
-}
-</style>
+<style scoped></style>

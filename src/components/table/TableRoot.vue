@@ -22,4 +22,10 @@ defineProps({
   </table>
 </template>
 
-<style scoped></style>
+<style scoped>
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-color: var(--border);
+}
+</style>
