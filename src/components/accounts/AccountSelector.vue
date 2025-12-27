@@ -15,7 +15,9 @@ const accounts = useAccountsStore()
 <template>
   <div class="border-2 border-border rounded-lg p-6 space-y-4">
     <div class="flex flex-col gap-2 items-center">
-      <label for="from_account">{{ $t('schema.transaction.from_account') }}</label>
+      <label for="from_account">
+        <slot></slot>
+      </label>
       <select name="from_account" id="from_account" v-model="model"
         class="bg-muted text-muted-foreground rounded-lg px-4 py-2 border border-border">
         <option v-for="account in options" :value="account.id" :key="account.name">
