@@ -1,5 +1,6 @@
 import type { Column } from '@/components/table'
 import { useAccountsStore } from '@/stores/accounts'
+import { formatMoney } from '@/utils/format'
 import { EllipsisVerticalIcon } from 'lucide-vue-next'
 import { h } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -21,7 +22,7 @@ export const transactionColumns: Column[] = [
   {
     name: 'amount',
     i18n: 'schema.transaction.amount',
-    transformer: (value) => `${value} NOK`,
+    transformer: (value) => formatMoney(value as number),
   },
   {
     name: 'from_account_id',

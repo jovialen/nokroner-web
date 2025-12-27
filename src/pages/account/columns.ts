@@ -1,7 +1,7 @@
 import PercentageBadge from '@/components/badge/PercentageBadge.vue'
 
 import { getColumnData, type Column } from '@/components/table'
-import { formatPercentage } from '@/utils/format'
+import { formatMoney, formatPercentage } from '@/utils/format'
 import { EllipsisVerticalIcon } from 'lucide-vue-next'
 import { h } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -23,9 +23,10 @@ export const account_columns: Column[] = [
   {
     name: 'balance',
     i18n: 'schema.account.balance',
-    cell: (value) => h('p', {}, `${value} NOK`),
+    cell: (value) => h('p', {}, formatMoney(value as number)),
     footerFunction: (columnData: unknown) =>
       (columnData as number[]).reduce((a, b) => a + b, 0),
+    footer: (value) => h('p', {}, formatMoney(value as number)),
   },
   {
     name: 'interest',
@@ -66,10 +67,10 @@ export const account_columns: Column[] = [
       key: 'page.accounts.table.change',
       props: { period: '1D', unit: 'NOK' },
     },
-    cell: (value) => h('p', {}, `${value} NOK`),
+    cell: (value) => h('p', {}, formatMoney(value as number)),
     footerFunction: (columnData: unknown[]) =>
       (columnData as number[]).reduce((a, b) => a + b, 0),
-    footer: (value) => h('p', {}, `${value} NOK`),
+    footer: (value) => h('p', {}, formatMoney(value as number)),
   },
   {
     name: 'trend_percent',
@@ -88,10 +89,10 @@ export const account_columns: Column[] = [
       key: 'page.accounts.table.trend',
       props: { period: '1D', unit: 'NOK' },
     },
-    cell: (value) => h('p', {}, `${value} NOK`),
+    cell: (value) => h('p', {}, formatMoney(value as number)),
     footerFunction: (columnData: unknown[]) =>
       (columnData as number[]).reduce((a, b) => a + b, 0),
-    footer: (value) => h('p', {}, `${value} NOK`),
+    footer: (value) => h('p', {}, formatMoney(value as number)),
   },
   {
     name: 'action',
