@@ -106,6 +106,7 @@ export const useAuthStore = defineStore('authentication', {
     },
 
     async logout() {
+      this.loggingOut = true
       this.loading = true
       this.error = ''
 
@@ -132,6 +133,7 @@ export const useAuthStore = defineStore('authentication', {
 
         // Finish the request
         this.loading = false
+        this.loggingOut = false
       }
     },
 
