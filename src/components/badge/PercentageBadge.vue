@@ -6,7 +6,7 @@ import { formatPercentage } from '@/utils/format';
 const props = defineProps({
   percentage: {
     type: Number,
-    required: true,
+    required: true
   },
   baseline: {
     type: Number,
