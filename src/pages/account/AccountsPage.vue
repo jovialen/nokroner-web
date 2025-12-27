@@ -1,9 +1,24 @@
 <script setup lang="ts">
-import { useAccountsStore } from '@/stores/accounts';
-import { formatPercentage } from '@/utils/format';
 import { EllipsisVerticalIcon } from 'lucide-vue-next';
 
-const accounts = useAccountsStore();
+import { useAccountsStore } from '@/stores/accounts';
+import { formatPercentage } from '@/utils/format';
+import { ref, watchEffect } from 'vue';
+
+const accounts = useAccountsStore()
+
+const total_balance = ref(0)
+const weighted_interest = ref(0)
+
+watchEffect(() => {
+  // Calculate the total balance
+  total_balance.value = accounts.user_accounts.map(account => account.balance).reduce((a, b) => a + b, 0)
+
+  // Calculate the equivalent interest for the total balance from the
+  // individual interests
+  const total_interest = accounts.user_accounts.map(account => account.balance * account.interest).reduce((a, b) => a + b, 0)
+  weighted_interest.value = total_interest / total_balance.value
+})
 </script>
 
 <template>
@@ -11,7 +26,7 @@ const accounts = useAccountsStore();
 
   <section class="w-full overflow-x-scroll">
     <table :aria-label="$t('accessibility.accounts.table')" tabindex="0"
-      class="w-full overflow-hidden rounded-lg border">
+      class="w-full overflow-hidden rounded-lg border w-max">
       <thead class="bg-muted text-muted-foreground text-sm">
         <tr>
           <th>{{ $t("page.accounts.table.name") }}</th>
@@ -31,12 +46,12 @@ const accounts = useAccountsStore();
           class="even:bg-muted hover:bg-primary hover:text-primary-foreground transition">
           <th scope="row">{{ account.name }}</th>
           <td>{{ account.account_number }}</td>
-          <td>{{ account.balance }} NOK</td>
+          <td>{{ account.balance }} <span>NOK</span></td>
           <td>{{ formatPercentage(account.interest - 1, 1) }}</td>
           <td>{{ formatPercentage(0) }}</td>
-          <td>0</td>
-          <td>{{ formatPercentage(0) }}</td>
-          <td>0</td>
+          <td>0 <span>NOK</span></td>
+          <td>{{ formatPercentage(0) }} <span>per month</span></td>
+          <td>0 <span>NOK/month</span></td>
           <td class="flex items-center justify-center">
             <button>
               <span class="sr-only">{{ $t("accessibility.table.actions") }}</span>
@@ -45,6 +60,20 @@ const accounts = useAccountsStore();
           </td>
         </tr>
       </tbody>
+
+      <tfoot class="bg-muted text-muted-foreground text-sm">
+        <tr>
+          <th scope="row">{{ $t("page.accounts.table.total") }}</th>
+          <td></td>
+          <td>{{ total_balance }} NOK</td>
+          <td>{{ formatPercentage(weighted_interest - 1, 1) }}</td>
+          <td>{{ formatPercentage(0) }}</td>
+          <td>0 NOK</td>
+          <td>{{ formatPercentage(0) }} per month</td>
+          <td>0 NOK/month</td>
+          <td></td>
+        </tr>
+      </tfoot>
     </table>
   </section>
 </template>
@@ -63,5 +92,9 @@ td {
   @apply px-4 py-2;
   text-align: left;
   font-weight: normal;
+}
+
+td>span {
+  @apply text-sm;
 }
 </style>

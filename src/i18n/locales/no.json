@@ -78,7 +78,8 @@
         "balance": "Beholdning",
         "interest": "Rente",
         "change": "Endring {period}",
-        "trend": "Trend"
+        "trend": "Trend",
+        "total": "Total"
       }
     }
   }

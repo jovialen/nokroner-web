@@ -78,7 +78,8 @@
         "balance": "Balance",
         "interest": "Interest",
         "change": "Change {period}",
-        "trend": "Trend"
+        "trend": "Trend",
+        "total": "Total"
       }
     }
   }
