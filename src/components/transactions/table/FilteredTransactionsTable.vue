@@ -3,7 +3,7 @@ import TransactionsTable from './TransactionsTable.vue';
 import { FilterIcon } from 'lucide-vue-next';
 
 import { type Transaction } from '@/api/schemas';
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useAccountsStore } from '@/stores/accounts';
 
 const props = defineProps({
@@ -20,12 +20,12 @@ const toFilter = ref<number | undefined>()
 
 const filteredTransactions = computed(() => props.transactions
   .filter(t => t.name.toLowerCase().includes(nameFilter.value.toLowerCase()))
-  .filter(t => amountFunction.value === "greater than" ? t.amount >= amountFilter.value : t.amount <= amountFilter.value)
+  .filter(t => (amountFunction.value === "greater than") ? (t.amount >= amountFilter.value) : (t.amount <= amountFilter.value))
   .filter(t => fromFilter.value ? t.from_account_id === fromFilter.value : true)
   .filter(t => toFilter.value ? t.to_account_id === toFilter.value : true)
 )
 
-console.log("FilteredTransactionTable", props.transactions, filteredTransactions.value)
+watch(filteredTransactions, () => console.log(filteredTransactions.value))
 </script>
 
 <template>
