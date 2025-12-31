@@ -10,27 +10,11 @@ const owners = useOwnersStore()
   <h1 class="text-xl">{{ $t('page.overview.title') }}</h1>
 
   <StatBar>
-    <NumericStatCard
-      :title="$t('stats.net_worth')"
-      :number="owners.user_owner?.net_worth"
-      :change="1.01"
-    />
-    <NumericStatCard
-      :title="$t('stats.income')"
-      :number="owners.user_owner?.net_worth"
-      :change="0.8"
-    />
-    <NumericStatCard
-      :title="$t('stats.expenses')"
-      :number="owners.user_owner?.net_worth"
-      :change="0.9"
-      decrease_positive
-    />
-    <NumericStatCard
-      :title="$t('stats.net_change')"
-      :number="owners.user_owner?.net_worth"
-      :change="1"
-    />
+    <NumericStatCard :title="$t('stats.net_worth')" :number="owners.userOwner?.net_worth" :change="1.01" />
+    <NumericStatCard :title="$t('stats.income')" :number="owners.userOwner?.net_worth" :change="0.8" />
+    <NumericStatCard :title="$t('stats.expenses')" :number="owners.userOwner?.net_worth" :change="0.9"
+      decrease_positive />
+    <NumericStatCard :title="$t('stats.net_change')" :number="owners.userOwner?.net_worth" :change="1" />
   </StatBar>
 </template>
 

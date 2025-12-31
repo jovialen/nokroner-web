@@ -19,7 +19,7 @@ export const useAccountsStore = defineStore('accounts', () => {
     return accounts.value.find((account) => account.id === id)
   }
 
-  const user_accounts = computed(() => getAccountsOwnedBy(owners.user_owner))
+  const user_accounts = computed(() => getAccountsOwnedBy(owners.userOwner))
 
   const fetchAccounts = async () => {
     if (auth.isAuthenticated) {
@@ -106,10 +106,10 @@ export const useTransactionsStore = defineStore('transactions', () => {
     }
   })
 
-  const userTransactions = ref(getOwnerTransactions(owners.user_owner))
+  const userTransactions = ref(getOwnerTransactions(owners.userOwner))
   watch(
-    [() => owners.user_owner, transactions],
-    () => (userTransactions.value = getOwnerTransactions(owners.user_owner)),
+    [() => owners.userOwner, transactions],
+    () => (userTransactions.value = getOwnerTransactions(owners.userOwner)),
   )
 
   return {

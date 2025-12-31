@@ -19,7 +19,7 @@ export const useOwnersStore = defineStore('owners', () => {
     }
   }
 
-  const user_owner = computed(() =>
+  const userOwner = computed(() =>
     owners.value.find((owner) => owner.user_id === user.user?.id),
   )
 
@@ -29,5 +29,5 @@ export const useOwnersStore = defineStore('owners', () => {
     }
   })
 
-  return { owners, user_owner, fetchOwners }
+  return { owners, userOwner, fetchOwners }
 })

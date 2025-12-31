@@ -40,8 +40,8 @@ const submit = async () => {
 }
 
 watchEffect(() => {
-  if (owners.user_owner) {
-    account.value.owner_id = owners.user_owner.id
+  if (owners.userOwner) {
+    account.value.owner_id = owners.userOwner.id
   }
 })
 </script>
@@ -55,54 +55,28 @@ watchEffect(() => {
   <form @submit.stop.prevent="submit()" class="flex flex-col gap-4">
     <div>
       <label for="name">{{ $t('schema.account.name') }}</label>
-      <input
-        type="text"
-        name="name"
-        id="name"
-        v-model="account.name"
-        :placeholder="$t('page.create_account.placeholder.name')"
-      />
+      <input type="text" name="name" id="name" v-model="account.name"
+        :placeholder="$t('page.create_account.placeholder.name')" />
     </div>
 
     <div>
       <label for="name">{{ $t('schema.account.account_number') }}</label>
-      <input
-        type="text"
-        name="account_number"
-        id="account_number"
-        v-model="account.account_number"
-        :placeholder="$t('page.create_account.placeholder.account_number')"
-      />
+      <input type="text" name="account_number" id="account_number" v-model="account.account_number"
+        :placeholder="$t('page.create_account.placeholder.account_number')" />
     </div>
 
     <div>
       <label for="initial_balance">{{ $t('schema.account.balance') }}</label>
-      <input
-        type="number"
-        step="0.01"
-        name="initial_balance"
-        id="initial_balance"
-        v-model="account.balance"
-      />
+      <input type="number" step="0.01" name="initial_balance" id="initial_balance" v-model="account.balance" />
     </div>
 
     <div>
       <label for="interest">{{ $t('schema.account.interest') }}</label>
-      <input
-        type="number"
-        step="0.001"
-        name="interest"
-        id="interest"
-        v-model="account.interest"
-      />
+      <input type="number" step="0.001" name="interest" id="interest" v-model="account.interest" />
     </div>
 
     <div class="flex-row!">
-      <button
-        type="submit"
-        class="bg-primary text-primary-foreground px-2 py-1"
-        :disabled="submitting"
-      >
+      <button type="submit" class="bg-primary text-primary-foreground px-2 py-1" :disabled="submitting">
         {{ $t('page.create_account.submit') }}
       </button>
     </div>
@@ -112,17 +86,17 @@ watchEffect(() => {
 <style scoped>
 @reference "tailwindcss";
 
-form > label {
+form>label {
   @apply text-sm;
   color: var(--muted-foreground);
 }
 
-form > input {
+form>input {
   @apply px-4 py-2;
   background-color: var(--muted);
 }
 
-form > div {
+form>div {
   @apply flex flex-col gap-2;
 }
 </style>
