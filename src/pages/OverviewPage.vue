@@ -2,12 +2,8 @@
 import NumericStatCard from '@/components/card/NumericStatCard.vue'
 import StatBar from '@/components/card/StatBar.vue'
 import { useUserOwnerStore } from '@/stores/owners'
-import { watch } from 'vue'
 
 const userOwner = useUserOwnerStore()
-watch(userOwner, () => {
-  console.log("Owner", userOwner.userOwner)
-})
 </script>
 
 <template>
