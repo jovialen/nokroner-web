@@ -78,7 +78,6 @@ export const useAuthStore = defineStore('authentication', {
       try {
         // Attempt to create a new session
         const response = await api.post('/sessions', data)
-        console.log(response.data)
 
         // Save the session information to the state
         this.session = response.data.id

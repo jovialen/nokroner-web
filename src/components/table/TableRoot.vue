@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import TableBody from './TableBody.vue';
-import TableFooter from './TableFooter.vue';
-import TableHeader from './TableHeader.vue';
+import TableBody from './TableBody.vue'
+import TableFooter from './TableFooter.vue'
+import TableHeader from './TableHeader.vue'
 
-import type { Column } from '.';
+import type { Column } from '.'
 
 defineProps({
   columns: Array<Column<unknown>>,
-  data: Array<object>
+  data: Array<{ id: number }>,
 })
 </script>
 
@@ -22,4 +22,10 @@ defineProps({
   </table>
 </template>
 
-<style scoped></style>
+<style scoped>
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-color: var(--border);
+}
+</style>

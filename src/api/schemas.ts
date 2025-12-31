@@ -26,3 +26,12 @@ export type OwnerInfo = {
 }
 
 export type Owner = DatabaseModel & OwnerInfo
+
+export type TransactionInfo = {
+  name: string
+  amount: number
+  from_account_id: number
+  to_account_id: number
+}
+
+export type Transaction = DatabaseModel & TransactionInfo

@@ -6,6 +6,14 @@
       "name": "Navn",
       "balance": "Beholdning",
       "interest": "Rente"
+    },
+
+    "transaction": {
+      "name": "Navn",
+      "amount": "Beløp",
+      "from_account": "Fra",
+      "to_account": "Til",
+      "date": "Overførseldato"
     }
   },
   "navigation": {
@@ -61,7 +69,9 @@
     },
 
     "sidebar": {
-      "user_card": "Bruker {user}"
+      "user_card": "Bruker {user}",
+      "open_sidebar": "Åpne side panel",
+      "close_sidebar": "Lukk side panel"
     },
 
     "accounts": {
@@ -95,6 +105,18 @@
       "placeholder": {
         "name": "Brukskonto",
         "account_number": "1234.56.78900"
+      }
+    },
+
+    "transactions": {
+      "add_transaction": "Ny overførsel"
+    },
+
+    "create_transaction": {
+      "title": "Lag overførsel",
+
+      "placeholder": {
+        "name": "Ukeslønn"
       }
     }
   }

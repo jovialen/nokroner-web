@@ -6,6 +6,14 @@
       "name": "Name",
       "balance": "Balance",
       "interest": "Interest"
+    },
+
+    "transaction": {
+      "name": "Name",
+      "amount": "Amount",
+      "from_account": "From",
+      "to_account": "To",
+      "date": "Date"
     }
   },
   "navigation": {
@@ -61,7 +69,9 @@
     },
 
     "sidebar": {
-      "user_card": "User {user}"
+      "user_card": "User {user}",
+      "open_sidebar": "Open side bar",
+      "close_sidebar": "Close side bar"
     },
 
     "accounts": {
@@ -95,6 +105,18 @@
       "placeholder": {
         "name": "Checking account",
         "account_number": "12-34-56 01234567"
+      }
+    },
+
+    "transactions": {
+      "add_transaction": "Add transaction"
+    },
+
+    "create_transaction": {
+      "title": "Add transaction",
+
+      "placeholder": {
+        "name": "Weekly allowance"
       }
     }
   }

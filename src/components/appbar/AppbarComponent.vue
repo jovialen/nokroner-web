@@ -13,6 +13,8 @@ import { ref } from 'vue'
 import router from '@/router'
 import UserCard from './UserCard.vue'
 
+const model = defineModel("open")
+
 const path = ref(window.location.pathname)
 router.afterEach(() => {
   path.value = window.location.pathname
@@ -22,17 +24,13 @@ const filteredRoutes = routes.filter((route) => !route.hidden)
 </script>
 
 <template>
-  <Sidebar>
-    <SidebarHeader>
+  <Sidebar :open="open">
+    <SidebarHeader v-model:open="model">
       <SidebarTitle>{{ $t('nokroner') }}</SidebarTitle>
     </SidebarHeader>
     <SidebarContent>
       <Navigation>
-        <navigation-item
-          v-for="route in filteredRoutes"
-          :to="route.path"
-          :key="route.name"
-        >
+        <navigation-item v-for="route in filteredRoutes" :to="route.path" :key="route.name">
           <SidebarItem :selected="path.includes(route.path)">
             <component :is="route.icon" />
             {{ $t(`navigation.${route.name?.toString()}`) }}

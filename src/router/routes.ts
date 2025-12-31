@@ -10,6 +10,7 @@ import LoansPage from '@/pages/loan/LoansPage.vue'
 import OverviewPage from '@/pages/OverviewPage.vue'
 import PaymentsPage from '@/pages/payment/PaymentsPage.vue'
 import SavingGoalsPage from '@/pages/saving_goal/SavingGoalsPage.vue'
+import CreateTransactionPage from '@/pages/transaction/CreateTransactionPage.vue'
 import TransactionsPage from '@/pages/transaction/TransactionsPage.vue'
 import {
   ArrowLeftRightIcon,
@@ -87,6 +88,12 @@ export const routes: (RouteRecordRaw &
     icon: ArrowLeftRightIcon,
     path: '/transaction',
     component: TransactionsPage,
+  },
+  {
+    hidden: true,
+    name: 'create_transaction',
+    path: '/transaction/create',
+    component: CreateTransactionPage,
   },
   {
     name: 'payments',

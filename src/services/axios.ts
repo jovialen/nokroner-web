@@ -1,12 +1,13 @@
 import { useAuthStore } from '@/stores/auth'
-import axios, { type AxiosResponse } from 'axios'
+import { type AxiosResponse } from 'axios'
+import { createAxiosDateTransformer } from 'axios-date-transformer'
 import { useRoute, useRouter } from 'vue-router'
 
 const host = import.meta.env.VITE_NOKRONER_API_HOST
 const port = import.meta.env.VITE_NOKRONER_API_PORT
 export const BASE_URL = `${host}:${port}`
 
-const api = axios.create({
+const api = createAxiosDateTransformer({
   baseURL: BASE_URL,
 })
 
