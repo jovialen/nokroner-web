@@ -1,20 +1,28 @@
 <script setup lang="ts">
 import NumericStatCard from '@/components/card/NumericStatCard.vue'
 import StatBar from '@/components/card/StatBar.vue'
-import { useOwnersStore } from '@/stores/owners'
+import { useUserOwnerStore } from '@/stores/owners'
+import { watch } from 'vue'
 
-const owners = useOwnersStore()
+const userOwner = useUserOwnerStore()
+watch(userOwner, () => {
+  console.log("Owner", userOwner.userOwner)
+})
 </script>
 
 <template>
   <h1 class="text-xl">{{ $t('page.overview.title') }}</h1>
 
-  <StatBar>
-    <NumericStatCard :title="$t('stats.net_worth')" :number="owners.userOwner?.net_worth" :change="1.01" />
-    <NumericStatCard :title="$t('stats.income')" :number="owners.userOwner?.net_worth" :change="0.8" />
-    <NumericStatCard :title="$t('stats.expenses')" :number="owners.userOwner?.net_worth" :change="0.9"
-      decrease_positive />
-    <NumericStatCard :title="$t('stats.net_change')" :number="owners.userOwner?.net_worth" :change="1" />
+  <StatBar v-if="userOwner.userOwner">
+    <NumericStatCard :title="$t('stats.net_worth')" :number="userOwner.userOwner!.net_worth"
+      :change="userOwner.userOwner!.net_worth / userOwner.userOwner!.net_worth_last_month" />
+    <NumericStatCard :title="$t('stats.income')" :number="userOwner.userOwner.recent_income"
+      :change="userOwner.userOwner!.recent_income / userOwner.userOwner!.previous_income" />
+    <NumericStatCard :title="$t('stats.expenses')" :number="userOwner.userOwner!.recent_expenses"
+      :change="userOwner.userOwner!.recent_expenses / userOwner.userOwner!.previous_expenses" decrease_positive />
+    <NumericStatCard :title="$t('stats.net_change')"
+      :number="userOwner.userOwner!.recent_income - userOwner.userOwner!.recent_expenses"
+      :change="(userOwner.userOwner!.recent_income - userOwner.userOwner!.recent_expenses) / (userOwner.userOwner!.previous_income - userOwner.userOwner!.previous_expenses)" />
   </StatBar>
 </template>
 

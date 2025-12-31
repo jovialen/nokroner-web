@@ -39,18 +39,11 @@ const BADGE_STYLE = {
 </script>
 
 <template>
-  <span
-    class="rounded-sm px-1 flex items-center w-min"
-    :class="BADGE_STYLE[change_is]"
-  >
-    <ArrowUpIcon
-      class="h-3/4 w-auto aspect-square"
-      v-if="change_is === 'positive'"
-    />
-    <ArrowDownIcon
-      class="h-3/4 w-auto aspect-square"
-      v-else-if="change_is === 'negative'"
-    />
+  <span class="rounded-sm px-1 flex items-center w-min" :class="BADGE_STYLE[change_is]">
+    <ArrowUpIcon class="h-3/4 w-auto aspect-square"
+      v-if="change_is === 'positive' && !decrease_positive || change_is == 'negative' && decrease_positive" />
+    <ArrowDownIcon class="h-3/4 w-auto aspect-square"
+      v-else-if="change_is === 'negative' && decrease_positive || change_is == 'positive' && !decrease_positive" />
     <MinusIcon class="h-3/4 w-auto aspect-square" v-else />
     {{ formatPercentage(Math.abs(normalized_percentage)) }}
   </span>

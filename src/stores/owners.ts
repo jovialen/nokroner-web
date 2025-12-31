@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { useAuthStore, useUserStore } from './auth'
 import { computed, ref, watchEffect } from 'vue'
-import { type Owner } from '@/api/schemas'
+import { type DetailedOwner, type Owner } from '@/api/schemas'
 import api from '@/services/axios'
 
 export const useOwnersStore = defineStore('owners', () => {
@@ -29,5 +29,28 @@ export const useOwnersStore = defineStore('owners', () => {
     }
   })
 
-  return { owners, userOwner, fetchOwners }
+  return { all: owners, userOwner, fetchOwners }
+})
+
+export const useUserOwnerStore = defineStore('userOwner', () => {
+  const owners = useOwnersStore()
+
+  const userOwner = ref<DetailedOwner | undefined>()
+
+  const fetchUserOwner = async () => {
+    if (owners.userOwner?.id) {
+      const response = await api.get(`/owners/${owners.userOwner.id}`)
+      userOwner.value = response.data
+    } else {
+      userOwner.value = undefined
+    }
+  }
+
+  watchEffect(() => {
+    if (owners.userOwner) {
+      fetchUserOwner()
+    }
+  })
+
+  return { userOwner, fetchUserOwner }
 })

@@ -25,7 +25,16 @@ export type OwnerInfo = {
   user_id: number
 }
 
+export type DetailedOwnerInfo = OwnerInfo & {
+  net_worth_last_month: number
+  recent_income: number
+  recent_expenses: number
+  previous_income: number
+  previous_expenses: number
+}
+
 export type Owner = DatabaseModel & OwnerInfo
+export type DetailedOwner = DatabaseModel & DetailedOwnerInfo
 
 export type TransactionInfo = {
   name: string
