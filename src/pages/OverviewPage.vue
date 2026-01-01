@@ -2,7 +2,9 @@
 import Card from '@/components/card/CardComponent.vue';
 import NumericStatCard from '@/components/card/NumericStatCard.vue'
 import StatBar from '@/components/card/StatBar.vue'
+import ChartBase from '@/components/charts/ChartBase.vue';
 import IncomeExpenseChart from '@/components/charts/IncomeExpenseChart.vue';
+import NetWorthChart from '@/components/charts/NetWorthChart.vue';
 import { useUserOwnerStore } from '@/stores/owners'
 
 const userOwner = useUserOwnerStore()
@@ -21,16 +23,35 @@ const userOwner = useUserOwnerStore()
       :change="(userOwner.userOwner!.recent_income - userOwner.userOwner!.recent_expenses) / (userOwner.userOwner!.previous_income - userOwner.userOwner!.previous_expenses)" />
   </StatBar>
 
-  <Card class="px-6 py-4 space-y-2">
-    <div class="flex justify-between items-center">
-      <h2 class="text-xl">Pengeflyt</h2>
-      <select name="graphPeriod" id="graphPeriod" class="px-4 py-2 border border-border rounded-lg">
-        <option value="monthly">Per måned</option>
-        <option value="weekly">Per uke</option>
-      </select>
-    </div>
-    <IncomeExpenseChart />
-  </Card>
+  <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
+    <ChartBase>
+      <template #headerLeft>
+        <h2 class="text-xl">Pengeflyt</h2>
+      </template>
+      <template #headerRight>
+        <select name="graphPeriod" id="graphPeriod" class="px-4 py-2 border border-border rounded-lg">
+          <option value="monthly">Per måned</option>
+          <option value="weekly">Per uke</option>
+        </select>
+      </template>
+
+      <IncomeExpenseChart />
+    </ChartBase>
+
+    <ChartBase>
+      <template #headerLeft>
+        <h2 class="text-xl">Formue</h2>
+      </template>
+      <template #headerRight>
+        <select name="graphPeriod" id="graphPeriod" class="px-4 py-2 border border-border rounded-lg">
+          <option value="monthly">Per måned</option>
+          <option value="weekly">Per uke</option>
+        </select>
+      </template>
+
+      <NetWorthChart />
+    </ChartBase>
+  </div>
 </template>
 
 <style scoped></style>
