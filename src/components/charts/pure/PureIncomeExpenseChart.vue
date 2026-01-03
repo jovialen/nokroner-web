@@ -10,6 +10,7 @@ const props = defineProps({
 
 const chartOptions = {
   responsive: true,
+  scales: { y: { beginAtZero: false } },
   borderRadius: 4.0,
   maintainAspectRatio: false
 }

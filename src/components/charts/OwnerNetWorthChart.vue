@@ -17,7 +17,7 @@ const apiData = ref([])
 watch([() => props.owner, year, period], async () => {
   try {
     const response = await api.get(`/owners/${props.owner}/history?period=${period.value}`)
-    apiData.value = response.data ?? []
+    apiData.value = response.data?.history ?? []
   } catch (err) {
     console.error("Failed to fetch money flow data:", err)
     apiData.value = []

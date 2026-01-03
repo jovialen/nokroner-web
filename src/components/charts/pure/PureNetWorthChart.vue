@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import Chart from 'chart.js/auto';
+import Chart, { type ChartOptions } from 'chart.js/auto';
 import { computed, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const props = defineProps({
-  data: { type: Array<{ period: Date, net_worth: number }>, default: [] },
+  data: { type: Array<{ timestamp: Date, net_worth: number }>, default: [] },
   period: { type: String, default: "month", validator: (value) => ["year", "month"].includes(value as string) }
 })
 
 const { d } = useI18n()
 
-const chartOptions = {
+const chartOptions: ChartOptions = {
   responsive: true,
-  borderRadius: 4.0,
+  scales: { y: { beginAtZero: false } },
   maintainAspectRatio: false
 }
 
 const chartData = computed(() => ({
-  labels: props.data.map(data => d(data.period, props.period === "month" ? { month: "short" } : { year: "numeric" })),
+  labels: props.data.map(data => d(data.timestamp, props.period === "month" ? { month: "short", year: "2-digit" } : { year: "numeric" })),
   datasets: [{
     label: "Net worth (NOK)",
     data: props.data.map(data => data.net_worth),
@@ -38,7 +38,7 @@ watch([canvas, chartData], () => {
   }
 
   chartInstance.value = new Chart(canvas.value, {
-    type: "bar",
+    type: "line",
     data: chartData.value,
     options: chartOptions
   })
