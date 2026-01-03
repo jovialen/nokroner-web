@@ -15,18 +15,18 @@ const chartOptions = {
   maintainAspectRatio: false
 }
 
-const { d } = useI18n()
+const { t, d } = useI18n()
 
 const chartData = computed(() => ({
   labels: props.data.map(data => props.monthLabels ? d(data.period, { month: "short" }) : d(data.period)),
   datasets: [
     {
-      label: "Income",
+      label: t("chart.money_flow.income"),
       data: props.data.map(d => d.income),
       backgroundColor: "oklch(0.527 0.154 150.069)"
     },
     {
-      label: "Expenses",
+      label: t("chart.money_flow.expenses"),
       data: props.data.map(d => d.expenses),
       backgroundColor: "oklch(0.871 0.15 154.449)"
     }]

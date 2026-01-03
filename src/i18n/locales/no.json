@@ -132,11 +132,14 @@
   },
   "chart": {
     "net_worth": {
-      "title": "Formue"
+      "title": "Formue",
+      "net_worth": "Formue (NOK)"
     },
 
     "money_flow": {
-      "title": "Pengeflyt"
+      "title": "Pengeflyt",
+      "income": "Inntekter",
+      "expenses": "Utgifter"
     }
   }
 }

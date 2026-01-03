@@ -132,11 +132,14 @@
   },
   "chart": {
     "net_worth": {
-      "title": "Net worth"
+      "title": "Net worth",
+      "net_worth": "Net worth (NOK)"
     },
 
     "money_flow": {
-      "title": "Money flow"
+      "title": "Money flow",
+      "income": "Income",
+      "expenses": "Expenses"
     }
   }
 }
