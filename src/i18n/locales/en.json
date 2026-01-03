@@ -16,6 +16,14 @@
       "date": "Transaction date"
     },
 
+    "saving_goal": {
+      "name": "Name",
+      "amount": "Amount",
+      "saved": "Saved",
+      "realized": "Complete",
+      "date": "Creation date"
+    },
+
     "period": {
       "period": "Period",
       "year": "Year",
@@ -128,6 +136,15 @@
 
       "placeholder": {
         "name": "Weekly allowance"
+      }
+    },
+
+    "create_saving_goal": {
+      "title": "Add saving goal",
+      "submit": "Create saving goal",
+
+      "placeholder": {
+        "name": "Emergency fund"
       }
     }
   },

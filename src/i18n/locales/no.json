@@ -16,6 +16,14 @@
       "date": "Overførseldato"
     },
 
+    "saving_goal": {
+      "name": "Navn",
+      "amount": "Beløp",
+      "saved": "Spart",
+      "realized": "Fullført",
+      "date": "Dato"
+    },
+
     "period": {
       "period": "Periode",
       "year": "År",
@@ -128,6 +136,15 @@
 
       "placeholder": {
         "name": "Ukeslønn"
+      }
+    },
+
+    "create_saving_goal": {
+      "title": "Legg til sparemål",
+      "submit": "Lag sparemål",
+
+      "placeholder": {
+        "name": "Platespiller"
       }
     }
   },

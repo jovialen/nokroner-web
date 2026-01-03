@@ -45,3 +45,11 @@ export type TransactionInfo = {
 }
 
 export type Transaction = DatabaseModel & TransactionInfo
+
+export type SavingGoalInfo = {
+  name: string
+  amount: number
+  realized: boolean
+}
+
+export type SavingGoal = DatabaseModel & SavingGoalInfo

@@ -9,6 +9,7 @@ import InvestmentsPage from '@/pages/investment/InvestmentsPage.vue'
 import LoansPage from '@/pages/loan/LoansPage.vue'
 import OverviewPage from '@/pages/OverviewPage.vue'
 import PaymentsPage from '@/pages/payment/PaymentsPage.vue'
+import CreateSavingGoalPage from '@/pages/saving_goal/CreateSavingGoalPage.vue'
 import SavingGoalsPage from '@/pages/saving_goal/SavingGoalsPage.vue'
 import CreateTransactionPage from '@/pages/transaction/CreateTransactionPage.vue'
 import TransactionsPage from '@/pages/transaction/TransactionsPage.vue'
@@ -112,6 +113,12 @@ export const routes: (RouteRecordRaw &
     icon: CoinsIcon,
     path: '/saving-goal',
     component: SavingGoalsPage,
+  },
+  {
+    hidden: true,
+    name: 'create_saving_goals',
+    path: '/saving-goal/create',
+    component: CreateSavingGoalPage,
   },
   {
     name: 'loans',
