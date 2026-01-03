@@ -129,5 +129,14 @@
         "name": "Ukeslønn"
       }
     }
+  },
+  "chart": {
+    "net_worth": {
+      "title": "Formue"
+    },
+
+    "money_flow": {
+      "title": "Pengeflyt"
+    }
   }
 }

@@ -129,5 +129,14 @@
         "name": "Weekly allowance"
       }
     }
+  },
+  "chart": {
+    "net_worth": {
+      "title": "Net worth"
+    },
+
+    "money_flow": {
+      "title": "Money flow"
+    }
   }
 }

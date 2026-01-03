@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import ChartBase from './ChartBase.vue';
-import PureIncomeExpenseChart from './pure/PureIncomeExpenseChart.vue';
-import InputNumber from '../input/InputNumber.vue';
+import PureNetWorthChart from './pure/PureNetWorthChart.vue';
 import InputPeriodSelector from './InputPeriodSelector.vue';
 import { ref, watch } from 'vue';
 import api from '@/services/axios';
@@ -17,8 +16,8 @@ const apiData = ref([])
 
 watch([() => props.owner, year, period], async () => {
   try {
-    const response = await api.get(`/owners/${props.owner}/money_flow?year=${year.value}&period=${period.value}`)
-    apiData.value = response.data?.all ?? []
+    const response = await api.get(`/owners/${props.owner}/history?period=${period.value}`)
+    apiData.value = response.data ?? []
   } catch (err) {
     console.error("Failed to fetch money flow data:", err)
     apiData.value = []
@@ -29,14 +28,13 @@ watch([() => props.owner, year, period], async () => {
 <template>
   <ChartBase>
     <template #headerLeft>
-      <h2 class="text-xl">{{ $t("chart.money_flow.title") }}</h2>
+      <h2 class="text-xl">{{ $t("chart.net_worth.title") }}</h2>
     </template>
     <template #headerRight>
-      <InputNumber v-model="year" label-hidden class="w-28">{{ $t("schema.period.year") }}</InputNumber>
-      <InputPeriodSelector v-model="period" include-month include-week />
+      <InputPeriodSelector v-model="period" include-year include-month />
     </template>
 
-    <PureIncomeExpenseChart :data="apiData" :month-labels="period === 'month'" />
+    <PureNetWorthChart :data="apiData" :month-labels="period === 'month'" />
   </ChartBase>
 </template>
 
