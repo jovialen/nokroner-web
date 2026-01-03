@@ -20,7 +20,8 @@
       "period": "Periode",
       "year": "År",
       "month": "Måned",
-      "week": "Uke"
+      "week": "Uke",
+      "day": "Dag"
     }
   },
   "navigation": {
