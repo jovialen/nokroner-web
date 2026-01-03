@@ -5,10 +5,10 @@ import Card from '../card/CardComponent.vue';
 <template>
   <Card class="px-6 py-4 space-y-2">
     <div class="flex justify-between items-center">
-      <div>
+      <div class="flex gap-2">
         <slot name="headerLeft"></slot>
       </div>
-      <div>
+      <div class="flex gap-2">
         <slot name="headerRight"></slot>
       </div>
     </div>

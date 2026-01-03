@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import Card from '@/components/card/CardComponent.vue';
 import NumericStatCard from '@/components/card/NumericStatCard.vue'
 import StatBar from '@/components/card/StatBar.vue'
 import ChartBase from '@/components/charts/ChartBase.vue';
-import IncomeExpenseChart from '@/components/charts/IncomeExpenseChart.vue';
-import NetWorthChart from '@/components/charts/NetWorthChart.vue';
 import { useUserOwnerStore } from '@/stores/owners'
+import OwnerIncomeExpenseChart from '@/components/charts/OwnerIncomeExpenseChart.vue';
 
 const userOwner = useUserOwnerStore()
 </script>
@@ -24,19 +22,7 @@ const userOwner = useUserOwnerStore()
   </StatBar>
 
   <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
-    <ChartBase>
-      <template #headerLeft>
-        <h2 class="text-xl">Pengeflyt</h2>
-      </template>
-      <template #headerRight>
-        <select name="graphPeriod" id="graphPeriod" class="px-4 py-2 border border-border rounded-lg">
-          <option value="monthly">Per måned</option>
-          <option value="weekly">Per uke</option>
-        </select>
-      </template>
-
-      <IncomeExpenseChart />
-    </ChartBase>
+    <OwnerIncomeExpenseChart v-if="userOwner.userOwner" :owner="userOwner.userOwner.id" />
 
     <ChartBase>
       <template #headerLeft>

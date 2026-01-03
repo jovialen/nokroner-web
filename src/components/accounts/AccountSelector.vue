@@ -14,7 +14,7 @@ const accounts = useAccountsStore()
 
 <template>
   <div class="border-2 border-border rounded-lg p-6 space-y-4">
-    <div class="flex flex-col gap-2 items-center">
+    <div class="flex flex-col gap-2 items-center justify-center">
       <label for="from_account">
         <slot></slot>
       </label>

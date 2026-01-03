@@ -4,7 +4,7 @@ import AccountSelector from '../accounts/AccountSelector.vue'
 import type { TransactionInfo } from '@/api/schemas'
 import api from '@/services/axios'
 import { useAccountsStore, useTransactionsStore } from '@/stores/accounts'
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, type InputHTMLAttributes } from 'vue'
 
 const emit = defineEmits(["submit", "created", "error"])
 
@@ -16,6 +16,7 @@ const transaction = ref<TransactionInfo>({
   amount: 0,
   from_account_id: accounts.user_accounts[0]?.id ?? -1,
   to_account_id: accounts.user_accounts[0]?.id ?? -1,
+  transaction_date: new Date(),
 })
 const submitting = ref(false)
 const maxAmount = computed(() => accounts.getAccount(transaction.value.from_account_id)?.balance ?? 0)
@@ -53,6 +54,7 @@ watch([() => transaction.value.amount, maxAmount], () => {
       </AccountSelector>
 
       <div class="grow flex flex-col gap-4 xl:order-2 order-4">
+        <label for="name" class="sr-only">{{ $t("schema.transaction.name") }}</label>
         <input type="text" name="name" id="name" v-model="transaction.name"
           class="text-xl bg-muted text-muted-foreground px-4 py-2 rounded-lg"
           :placeholder="$t('page.create_transaction.placeholder.name')" />
@@ -67,6 +69,11 @@ watch([() => transaction.value.amount, maxAmount], () => {
             step="0.01" class="w-full"
             :disabled="transaction.from_account_id === transaction.to_account_id || transaction.from_account_id === -1" />
         </div>
+
+        <label for="transactionDate" class="sr-only">{{ $t("schema.transaction.date") }}</label>
+        <input class="border border-border rounded-lg px-4 py-2 bg-muted text-muted-foreground" type="date"
+          name="transactionDate" id="transactionDate" :valueAsDate="transaction.transaction_date"
+          @change="date => transaction.transaction_date = date.target!.valueAsDate">
       </div>
 
       <AccountSelector class="order-3" :options="accounts.accounts" v-model="transaction.to_account_id">
@@ -76,7 +83,7 @@ watch([() => transaction.value.amount, maxAmount], () => {
 
     <div class="flex-row!">
       <button type="submit" class="bg-primary text-primary-foreground px-2 py-1 rounded-lg" :disabled="submitting">
-        {{ $t('page.create_account.submit') }}
+        {{ $t('page.create_transaction.submit') }}
       </button>
     </div>
   </form>

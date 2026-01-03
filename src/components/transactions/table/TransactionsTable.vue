@@ -3,12 +3,10 @@ import { Table } from '@/components/table';
 
 import { type Transaction } from '@/api/schemas';
 import { transactionColumns } from './columns';
-import { watch } from 'vue';
 
-const props = defineProps({
+defineProps({
   transactions: Array<Transaction>
 })
-watch(props, () => console.log("Table", props.transactions))
 </script>
 
 <template>

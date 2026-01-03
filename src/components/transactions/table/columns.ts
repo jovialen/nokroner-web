@@ -8,7 +8,7 @@ import { useI18n } from 'vue-i18n'
 export const transactionColumns: Column[] = [
   {
     name: 'date',
-    accessor: 'created_at',
+    accessor: 'transaction_date',
     i18n: 'schema.transaction.date',
     transformer: (date) => {
       const { d } = useI18n({ useScope: 'global' })

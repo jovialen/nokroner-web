@@ -41,6 +41,7 @@ export type TransactionInfo = {
   amount: number
   from_account_id: number
   to_account_id: number
+  transaction_date: Date
 }
 
 export type Transaction = DatabaseModel & TransactionInfo

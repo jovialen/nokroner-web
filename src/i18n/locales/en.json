@@ -13,7 +13,14 @@
       "amount": "Amount",
       "from_account": "From",
       "to_account": "To",
-      "date": "Date"
+      "date": "Transaction date"
+    },
+
+    "period": {
+      "period": "Period",
+      "year": "Year",
+      "month": "Month",
+      "week": "Week"
     }
   },
   "navigation": {
@@ -84,7 +91,9 @@
   },
   "page": {
     "overview": {
-      "title": "Overview"
+      "title": "Overview",
+
+      "per_period": "Per {period}"
     },
 
     "accounts": {
@@ -114,6 +123,7 @@
 
     "create_transaction": {
       "title": "Add transaction",
+      "submit": "Create transaction",
 
       "placeholder": {
         "name": "Weekly allowance"
