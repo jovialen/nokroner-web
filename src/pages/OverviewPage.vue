@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import NumericStatCard from '@/components/card/NumericStatCard.vue'
 import StatBar from '@/components/card/StatBar.vue'
-import ChartBase from '@/components/charts/ChartBase.vue';
 import { useUserOwnerStore } from '@/stores/owners'
 import OwnerIncomeExpenseChart from '@/components/charts/OwnerIncomeExpenseChart.vue';
 import OwnerNetWorthChart from '@/components/charts/OwnerNetWorthChart.vue';
+import MultipleSavingGoalStatusCard from '@/components/saving_goal/MultipleSavingGoalStatusCard.vue';
+import { useSavingGoalsStore } from '@/stores/saving_goals';
 
 const userOwner = useUserOwnerStore()
+const savingGoals = useSavingGoalsStore()
 </script>
 
 <template>
@@ -22,10 +24,14 @@ const userOwner = useUserOwnerStore()
       :change="(userOwner.userOwner!.recent_income - userOwner.userOwner!.recent_expenses) / (userOwner.userOwner!.previous_income - userOwner.userOwner!.previous_expenses)" />
   </StatBar>
 
-  <div class="grid lg:grid-cols-2 grid-cols-1 gap-6">
+  <section class="grid lg:grid-cols-2 grid-cols-1 gap-6">
     <OwnerIncomeExpenseChart v-if="userOwner.userOwner" :owner="userOwner.userOwner.id" />
     <OwnerNetWorthChart v-if="userOwner.userOwner" :owner="userOwner.userOwner.id" />
-  </div>
+  </section>
+
+  <section>
+    <MultipleSavingGoalStatusCard v-if="savingGoals.savingGoals.length > 0" :saving-goals="savingGoals.savingGoals" />
+  </section>
 </template>
 
 <style scoped></style>

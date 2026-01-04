@@ -148,6 +148,11 @@
       }
     }
   },
+  "components": {
+    "saving_goals": {
+      "title": "Sparemål"
+    }
+  },
   "chart": {
     "net_worth": {
       "title": "Formue",

@@ -10,5 +10,5 @@ export const formatPercentage = (
   decimals: number = 0,
 ) => `${round(decimal_percentage * 100, decimals)}%`
 
-export const formatMoney = (money?: number) =>
-  money ? `${round(money, 2).toFixed(2)} NOK` : '0.00 NOK'
+export const formatMoney = (money?: number, decimals: number = 2) =>
+  `${round(money ?? 0, 2).toFixed(decimals)} NOK`

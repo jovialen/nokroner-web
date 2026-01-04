@@ -148,6 +148,11 @@
       }
     }
   },
+  "components": {
+    "saving_goals": {
+      "title": "Saving goals"
+    }
+  },
   "chart": {
     "net_worth": {
       "title": "Net worth",
