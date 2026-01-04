@@ -3,8 +3,9 @@ import type { DetailedSavingGoal } from '@/api/schemas';
 import api from '@/services/axios';
 import { useSavingGoalsStore } from '@/stores/saving_goals';
 import { formatMoney, formatPercentage } from '@/utils/format';
-import { computed } from 'vue';
+import { computed, reactive, watchEffect } from 'vue';
 import TextButton from '../button/TextButton.vue';
+import gsap from 'gsap';
 
 const props = defineProps({
   savingGoal: {
@@ -16,6 +17,7 @@ const props = defineProps({
 const savingGoals = useSavingGoalsStore()
 
 const realSavingGoal = computed(() => props.savingGoal as DetailedSavingGoal);
+const tweened = reactive({ saved: 0 })
 const progress = computed(() => realSavingGoal.value.saved / realSavingGoal.value.amount)
 
 const complete = async () => {
@@ -31,6 +33,10 @@ const undo = async () => {
   })
   await savingGoals.fetchSavingGoals()
 }
+
+watchEffect(() => {
+  gsap.to(tweened, { duration: 0.5, saved: realSavingGoal.value.saved || 0 })
+})
 </script>
 
 <template>
@@ -39,13 +45,13 @@ const undo = async () => {
     <div class="flex justify-between items-center">
       <h3 class="text-foreground text-base">{{ realSavingGoal.name }}</h3>
       <div>
-        <span class="text-foreground text-base">{{ formatMoney(realSavingGoal.saved, 0) }}</span>
+        <span class="text-foreground text-base">{{ formatMoney(tweened.saved, 0) }}</span>
         /
         <span>{{ formatMoney(realSavingGoal.amount, 0) }}</span>
       </div>
     </div>
-    <div class="flex gap-2 h-full justify-center items-center" v-if="!realSavingGoal.ready">
-      <progress :value="realSavingGoal.saved" :max="realSavingGoal.amount" class="w-full rounded-sm"></progress>
+    <div class="flex gap-2 h-full justify-center items-center" v-if="tweened.saved < realSavingGoal.amount">
+      <progress :value="tweened.saved" :max="realSavingGoal.amount" class="w-full rounded-sm"></progress>
       <span>{{ formatPercentage(progress) }}</span>
     </div>
     <TextButton v-else-if="realSavingGoal.realized" @click="undo()" hover-variant="destructive" class="group">
