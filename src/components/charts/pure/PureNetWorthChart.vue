@@ -25,6 +25,7 @@ const chartData = computed(() => ({
     borderColor: "oklch(0.527 0.154 150.069)",
     backgroundColor: "oklch(0.871 0.15 154.449 / 10%)",
     tension: 0.2,
+    fill: true,
     trendlineLinear: {
       lineStyle: "dashed",
       width: 2,

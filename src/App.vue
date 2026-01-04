@@ -20,7 +20,8 @@ const appbarOpen = ref(true)
           <PanelLeftOpenIcon v-else />
         </SidebarToggle>
         <Page>
-          <main id="content" class="space-y-6" :aria-label="$t(`navigation.${$route.name?.toString()}`)">
+          <main id="content" class="space-y-6"
+            :aria-label="$route.name ? $t(`navigation.${$route.name.toString()}`) : undefined">
             <RouterView />
           </main>
         </Page>

@@ -14,8 +14,8 @@ const transactions = useTransactionsStore()
 const transaction = ref<TransactionInfo>({
   name: '',
   amount: 0,
-  from_account_id: accounts.user_accounts[0]?.id ?? -1,
-  to_account_id: accounts.user_accounts[0]?.id ?? -1,
+  from_account_id: accounts.userAccounts[0]?.id ?? -1,
+  to_account_id: accounts.userAccounts[0]?.id ?? -1,
   transaction_date: new Date(),
 })
 const submitting = ref(false)
@@ -49,7 +49,7 @@ watch([() => transaction.value.amount, maxAmount], () => {
 <template>
   <form @submit.stop.prevent="submit()" class="flex flex-col gap-4 items-center">
     <div class="flex xl:flex-row flex-col justify-between items-center gap-4">
-      <AccountSelector class="order-1" :options="accounts.user_accounts" v-model="transaction.from_account_id">
+      <AccountSelector class="order-1" :options="accounts.userAccounts" v-model="transaction.from_account_id">
         {{ $t('schema.transaction.from_account') }}
       </AccountSelector>
 

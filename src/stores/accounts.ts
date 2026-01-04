@@ -19,7 +19,7 @@ export const useAccountsStore = defineStore('accounts', () => {
     return accounts.value.find((account) => account.id === id)
   }
 
-  const user_accounts = computed(() => getAccountsOwnedBy(owners.userOwner))
+  const userAccounts = computed(() => getAccountsOwnedBy(owners.userOwner))
 
   const fetchAccounts = async () => {
     if (auth.isAuthenticated) {
@@ -38,7 +38,7 @@ export const useAccountsStore = defineStore('accounts', () => {
 
   return {
     accounts,
-    user_accounts,
+    userAccounts: userAccounts,
     getAccountsOwnedBy,
     getAccount,
     fetchAccounts,
