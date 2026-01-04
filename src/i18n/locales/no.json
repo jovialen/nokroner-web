@@ -96,6 +96,10 @@
 
     "table": {
       "actions": "Handlinger"
+    },
+
+    "saving_goals": {
+      "saved": "Sparemål {name} har spart {saved} av {amount}"
     }
   },
   "page": {

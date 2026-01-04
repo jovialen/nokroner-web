@@ -34,7 +34,8 @@ const undo = async () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-2 text-muted-foreground text-sm">
+  <div class="flex flex-col gap-2 text-muted-foreground text-sm" tabindex="0"
+    :aria-label="$t('accessibility.saving_goals.saved', realSavingGoal)">
     <div class="flex justify-between items-center">
       <h3 class="text-foreground text-base">{{ realSavingGoal.name }}</h3>
       <div>

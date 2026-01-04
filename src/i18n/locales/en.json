@@ -96,6 +96,10 @@
 
     "table": {
       "actions": "Actions"
+    },
+
+    "saving_goals": {
+      "saved": "Saving goal {name} has saved {saved} of {amount}"
     }
   },
   "page": {
