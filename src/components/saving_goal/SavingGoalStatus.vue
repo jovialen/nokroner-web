@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SavingGoal } from '@/api/schemas';
+import type { DetailedSavingGoal } from '@/api/schemas';
 import api from '@/services/axios';
 import { useSavingGoalsStore } from '@/stores/saving_goals';
 import { formatMoney, formatPercentage } from '@/utils/format';
@@ -15,7 +15,7 @@ const props = defineProps({
 
 const savingGoals = useSavingGoalsStore()
 
-const realSavingGoal = computed(() => props.savingGoal as SavingGoal);
+const realSavingGoal = computed(() => props.savingGoal as DetailedSavingGoal);
 const progress = computed(() => realSavingGoal.value.saved / realSavingGoal.value.amount)
 
 const complete = async () => {

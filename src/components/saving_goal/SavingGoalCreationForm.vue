@@ -11,7 +11,8 @@ const savingGoals = useSavingGoalsStore()
 const savingGoal = ref<SavingGoalInfo>({
   name: '',
   amount: 0,
-  realized: false
+  realized: false,
+  archived: false,
 })
 const submitting = ref(false)
 

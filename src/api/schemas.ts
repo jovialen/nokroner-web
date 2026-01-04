@@ -49,9 +49,13 @@ export type Transaction = DatabaseModel & TransactionInfo
 export type SavingGoalInfo = {
   name: string
   amount: number
-  saved: number
   realized: boolean
+  archived: boolean
+}
+export type DetailedSavingGoalInfo = SavingGoalInfo & {
+  saved: number
   ready: boolean
 }
 
 export type SavingGoal = DatabaseModel & SavingGoalInfo
+export type DetailedSavingGoal = DatabaseModel & DetailedSavingGoalInfo
