@@ -150,7 +150,11 @@
   },
   "components": {
     "saving_goals": {
-      "title": "Saving goals"
+      "title": "Saving goals",
+      "create": "New saving goal",
+      "complete": "Complete",
+      "completed": "Completed",
+      "undo": "Undo"
     }
   },
   "chart": {

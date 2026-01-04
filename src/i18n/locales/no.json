@@ -150,7 +150,11 @@
   },
   "components": {
     "saving_goals": {
-      "title": "Sparemål"
+      "title": "Sparemål",
+      "create": "Nytt sparemål",
+      "complete": "Fullfør",
+      "completed": "Fullført",
+      "undo": "Angre"
     }
   },
   "chart": {

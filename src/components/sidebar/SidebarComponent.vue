@@ -6,7 +6,7 @@ defineProps({
 
 <template>
   <section :class="open || 'hidden'"
-    class="bg-sidebar text-sidebar-foreground pt-6 pl-6 pb-4 w-96 h-screen flex flex-col justify-between">
+    class="bg-sidebar text-sidebar-foreground p-6 pb-4 md:pr-0 md:w-96 w-full h-screen flex flex-col justify-between">
     <slot></slot>
   </section>
 </template>

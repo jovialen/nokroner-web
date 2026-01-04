@@ -5,7 +5,7 @@ import { type SavingGoal } from '@/api/schemas';
 import { savingGoalsColumns } from './columns';
 
 defineProps({
-  savingGoals: Array<SavingGoal>
+  savingGoals: Array<SavingGoal>,
 })
 </script>
 
