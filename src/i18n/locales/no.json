@@ -21,6 +21,7 @@
       "amount": "Beløp",
       "saved": "Spart",
       "realized": "Fullført",
+      "archived": "Arkivert",
       "date": "Dato"
     },
 
@@ -99,7 +100,9 @@
     },
 
     "saving_goals": {
-      "saved": "Sparemål {name} har spart {saved} av {amount}"
+      "saved": "Sparemål {name} har spart {saved} av {amount}",
+      "archived": "Fullført sparemål av {amount}",
+      "archive": "Arkiver"
     }
   },
   "page": {
@@ -158,7 +161,8 @@
       "create": "Nytt sparemål",
       "complete": "Fullfør",
       "completed": "Fullført",
-      "undo": "Angre"
+      "undo": "Angre",
+      "undo_archive": "Angre arkivering"
     }
   },
   "chart": {

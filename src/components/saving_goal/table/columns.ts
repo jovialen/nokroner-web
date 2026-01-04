@@ -33,6 +33,11 @@ export const savingGoalsColumns: Column[] = [
     i18n: 'schema.saving_goal.realized',
   },
   {
+    name: 'archived',
+    i18n: 'schema.saving_goal.archived',
+    transformer: (value) => !!value,
+  },
+  {
     name: 'action',
     i18n: 'accessibility.table.actions',
     header: () => h('div'),

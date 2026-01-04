@@ -30,7 +30,7 @@ const savingGoals = useSavingGoalsStore()
   </section>
 
   <section>
-    <MultipleSavingGoalStatusCard v-if="savingGoals.savingGoals.length > 0" :saving-goals="savingGoals.savingGoals" />
+    <MultipleSavingGoalStatusCard :saving-goals="savingGoals.savingGoals.filter(s => !s.archived)" />
   </section>
 </template>
 

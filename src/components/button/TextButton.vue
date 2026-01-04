@@ -31,7 +31,7 @@ const HOVER_VARIANTS: { [key: string]: string } = {
 }
 
 const classes = computed(() => [
-  "flex justify-center items-center rounded-lg text-base transition px-4 py-1",
+  "cursor-pointer flex justify-center items-center rounded-lg text-base transition px-4 py-1",
   VARIANTS[props.variant],
   HOVER_VARIANTS[props.hoverVariant ?? props.variant]
 ].join(' '))
